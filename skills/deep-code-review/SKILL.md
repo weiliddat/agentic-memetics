@@ -1,6 +1,6 @@
 ---
 name: deep-code-review
-description: Perform a deep, structured, multi-phase code review as a senior staff engineer. Covers PR context gathering (including Notion PEP lookup), semantic grouping of changes, parallel per-group subagent review across multiple quality criteria, and a final holistic PR evaluation. Use when asked to do a thorough or comprehensive code review, review a PR in depth, or review code changes critically.
+description: Perform a deep, structured, multi-phase code review as a senior staff engineer. Covers PR context gathering, semantic grouping of changes, parallel per-group subagent review across multiple quality criteria, and a final holistic PR evaluation. Use when asked to do a thorough or comprehensive code review, review a PR in depth, or review code changes critically.
 ---
 
 # Deep Code Review
@@ -20,8 +20,6 @@ git log master...HEAD --oneline # commit history
 
 If `gh` is unavailable, fall back to `git diff master...HEAD`.
 
-**Notion lookup**: If the PR title contains `[PEP-XXXXX]` (e.g. `[PEP-12345]`), search Notion via MCP for that PEP ID and read the linked page to understand requirements, acceptance criteria, and design decisions. Surface key points from the spec in Phase 4.
-
 **If any identifiers were renamed**, immediately run a codebase-wide search for each old name before proceeding:
 
 ```bash
@@ -30,7 +28,7 @@ rg '\bOLD_NAME\b' -l
 
 **Orientation output** (brief, internal — not final review):
 - PR purpose and scope in 2–3 sentences
-- Key Notion/spec insights if applicable
+- Key requirements or spec insights if applicable
 - Files changed (count + list)
 - Renamed identifiers (if any): list every old name → new name pair
 - Type/shape changes (if any): list every field whose type changed (e.g., scalar → array, optional → required, string → enum) with old and new types
@@ -43,7 +41,7 @@ rg '\bOLD_NAME\b' -l
 Look at the full file list from Phase 1. Group files into **semantic topics** based on:
 
 1. PR title / description intent
-2. Notion/spec acceptance criteria (if applicable)
+2. Any linked requirements or acceptance criteria (if applicable)
 3. The code itself (imports, function names, module paths)
 
 Good group types (non-exhaustive — use judgment):
@@ -205,7 +203,7 @@ After all subagent results are collected, synthesize into a final review.
 - **Author**: [name]
 - **Files changed**: [N] ([added]/[modified]/[deleted])
 - **Complexity**: Low / Medium / High / Very High
-- **Spec / PEP**: [link or "N/A"]
+- **Spec / Ticket**: [link or "N/A"]
 - **Summary**: [2–3 sentences on intent and scope]
 - **Overall assessment**: [Quality, risk level, merge readiness]
 

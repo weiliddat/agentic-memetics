@@ -11,7 +11,7 @@ Guide reviewers through a pull request by gathering context, identifying logical
 
 Large PR diffs can consume most of the agent's context window, leaving little room for producing high-quality walkthrough explanations. To avoid this:
 
-1. **Main agent** handles lightweight steps (PR metadata, file list, ticket lookup) and the final walkthrough output
+1. **Main agent** handles lightweight steps (PR metadata, file list, context lookup) and the final walkthrough output
 2. **Subagents** handle context-heavy steps (reading full diff, reading source files, grouping changes) and return condensed structured summaries
 3. This keeps the main agent's context clean for the most important part: composing the walkthrough
 
@@ -45,21 +45,19 @@ gh pr diff --stat
 
 **Important:** Do NOT run `gh pr diff` (full diff) in the main agent. The full diff will be read by subagents in Step 2.
 
-### Check for ticket reference
+### Check for extra context
 
-Look for a ticket prefix (e.g., `PEP-12345`) in:
+Look for linked issues, tickets, or design docs in:
 
 - PR title
 - Branch name
+- PR description
 
-If found, search Notion MCP for additional context:
+If found, gather any accessible context that clarifies:
 
-```
-Use the Notion MCP to search for the ticket ID (e.g., "PEP-12345") to retrieve:
 - Goal/objective of the work
 - Acceptance criteria
 - Design decisions
-```
 
 ---
 
@@ -81,8 +79,8 @@ You are analyzing PR #{pr_number} for a walkthrough. Here is context from the PR
 **Files changed (from --stat):**
 {diff_stat_output}
 
-**Ticket context (if any):**
-{ticket_context_or_none}
+**Additional context (if any):**
+{additional_context_or_none}
 
 ## Your Tasks
 
