@@ -148,10 +148,9 @@ Check the following before outputting:
 - Is the level of detail appropriate for the user's request?
 
 **Code References:**
-
-- Format: ` ```startLine:endLine:path/file.ts ` (no language tag, both line numbers required)
-- Each block has at least 1 line of code content
-- Blank line before each code block
+- Use `skills/code-reference-formatting/SKILL.md` for file references and code previews
+- Prefer the environment's native clickable format when you know it
+- Otherwise use `filepath[:start][:end]` and put the preview directly underneath
 
 ### 4c. Output Refined Version
 
@@ -175,10 +174,10 @@ For each group, present information in this structure:
 [Explain the implementation — what the code does, key decisions, and non-obvious behavior]
 
 **Key Code:**
-[Use clickable code references - see format below]
+[Use the shared `code-reference-formatting` skill for references and previews]
 
 **OPTIONAL: Related Code:**
-[Code outside the primary scope that helps understand this section]
+[Code outside the primary scope that helps understand this section. Format it with the shared `code-reference-formatting` skill.]
 
 **OPTIONAL: Notes:**
 [Anything worth calling out: trade-offs, risks, gotchas, incomplete work, potential improvements]
@@ -186,23 +185,9 @@ For each group, present information in this structure:
 
 Adjust the template per section — not every section needs every field. Skip fields that would be empty or redundant.
 
-### Clickable Code Reference Format
+### Code Reference Format
 
-Use Cursor's code reference syntax so readers can click to navigate directly to the code:
-
-````
-```startLine:endLine:path/to/file.ts
-// relevant code snippet here
-```
-````
-
-**Rules:**
-
-- Always include at least 1 line of actual code content (empty blocks break rendering)
-- Do NOT add a language tag — the format is strictly `startLine:endLine:filepath`
-- Put a blank line before each code block
-- Include enough context (3-5 lines) for the snippet to be meaningful
-- For long functions, show the key lines and use `// ...` to elide the rest
+Use the shared `code-reference-formatting` skill. Do not redefine file-reference rules here.
 
 ---
 
@@ -218,7 +203,8 @@ Defines what a conversation looks like and which fields control archiving behavi
 
 **Key Code:**
 
-```12:28:modules/leapy/models/conversation.model.ts
+`modules/leapy/models/conversation.model.ts:12:28`
+```ts
 export interface Conversation {
     _id: ObjectId;
     companyId: ObjectId;
@@ -241,7 +227,8 @@ Runs on a cron schedule. Queries for conversations that have been inactive longe
 
 **Key Code:**
 
-```1:35:modules/leapy/jobs/autoArchiveConversations.job.ts
+`modules/leapy/jobs/autoArchiveConversations.job.ts:1:35`
+```ts
 export const autoArchiveConversationsJob = async () => {
     const threshold = subDays(new Date(), ARCHIVE_AFTER_DAYS);
     const conversations = await findStaleConversations(threshold);
@@ -265,7 +252,8 @@ Sets status to `archived`, deletes associated AI checkpoints to free storage, an
 
 **Key Code:**
 
-```40:65:modules/leapy/services/conversation.service.ts
+`modules/leapy/services/conversation.service.ts:40:65`
+```ts
 export const archiveConversation = async (conversationId: ObjectId) => {
     await updateConversation(conversationId, { status: 'archived' });
     await deleteCheckpoints(conversationId);
@@ -275,7 +263,8 @@ export const archiveConversation = async (conversationId: ObjectId) => {
 
 **Related Code:**
 
-```1:20:modules/ai/utils/deleteCheckpoints.util.ts
+`modules/ai/utils/deleteCheckpoints.util.ts:1:20`
+```ts
 // Checkpoint cleanup called during archiving
 export const deleteCheckpoints = async (threadId: string) => {
     // ...

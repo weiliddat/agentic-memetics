@@ -125,16 +125,7 @@ For each file in the group, evaluate on all criteria:
 
 ### File Reference Format
 
-When referencing files in subagent output, use Cursor-native clickable references:
-
-- Use backticked file paths like `src/path/file.ts`
-- If line-specific evidence matters, add a code citation block using Cursor's native format:
-
-```text
-```start:end:path/to/file.ts
-code excerpt here
-```
-```
+Use `skills/code-reference-formatting/SKILL.md` for all file references and previews.
 
 ### Subagent Output Format
 
@@ -154,9 +145,9 @@ Each subagent returns findings in this structure:
 **Issues**:
 
 [Critical | Missed coverage] <old identifier still used here — describe impact>
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 Impact: <why it matters>
@@ -164,9 +155,9 @@ Fix:
   <code suggestion>
 
 [Critical | Bug] <description>
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 Impact: <why it matters>
@@ -174,16 +165,16 @@ Fix:
   <code suggestion>
 
 [Nitpick | Style] <description>
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 
 [Clarification Needed] <question for author>
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 
@@ -233,9 +224,9 @@ Group by file. Within each file, order: Critical → Nitpick → Clarification.
 Use format:
 
 **Critical | [Category]**: [one sentence]
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 Impact: [if non-obvious]
@@ -247,18 +238,18 @@ fixed code here
 ---
 
 _Nitpick | [Category]_: [one sentence]
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 
 ---
 
 _Clarification Needed_: [question]
-Location: `path/to/file.ts`
-Evidence (if helpful):
-```start:end:path/to/file.ts
+Reference: `path/to/file.ts:start:end`
+Preview:
+```ts
 relevant code excerpt
 ```
 

@@ -122,10 +122,10 @@ Return your analysis in EXACTLY this format for each group:
 INTENT: [1-2 sentence explanation of what this change aims to achieve and why]
 TECHNICAL: [Description of how the code achieves this goal, including key implementation details]
 FILES:
-- path/to/file.ts (startLine-endLine): [brief description of what changed in this range]
-- path/to/other.ts (startLine-endLine): [brief description]
+- `path/to/file.ts:startLine:endLine`: [brief description of what changed in this range]
+- `path/to/other.ts:startLine:endLine`: [brief description]
 RELATED_UNCHANGED:
-- path/to/related.ts (startLine-endLine): [why this unchanged code is relevant]
+- `path/to/related.ts:startLine:endLine`: [why this unchanged code is relevant]
 REVIEW_NOTES:
 - Correctness: [assessment]
 - Risks: [any potential risks]
@@ -175,10 +175,9 @@ Check the following before outputting:
 - Are there redundant or overly verbose sections to trim?
 
 **Code References:**
-
-- Format: ` ```startLine:endLine:path/file.ts ` (no language tag, both line numbers required)
-- Each block has at least 1 line of code content
-- Blank line before each code block
+- Use `skills/code-reference-formatting/SKILL.md` for all references and previews
+- Prefer the environment's native clickable format when you know it
+- Otherwise use `filepath[:start][:end]` with the preview directly underneath
 
 ### 3c. Verify Key Code References
 
@@ -204,32 +203,18 @@ For each group, present information in this structure:
 [Describe how the code achieves (or doesn't fully achieve) this goal]
 
 **Files Changed:**
-[Use clickable code references - see format below]
+[Use the shared `code-reference-formatting` skill for references and previews]
 
 **OPTIONAL: Related unchanged code:**
-[If there are code structures not in the diff but are still relevant to understanding the change, use clickable code references - see format below]
+[If there are code structures not in the diff but are still relevant, format them with the shared `code-reference-formatting` skill]
 
 **Review Notes:**
 [Brief evaluation covering: correctness, potential risks, key decisions made, sane alternatives if applicable, how to test this change, and QA considerations for affected user flows/behaviors]
 ```
 
-### Clickable Code Reference Format
+### Code Reference Format
 
-Use Cursor's code reference syntax so reviewers can click to navigate directly to the code:
-
-````
-```startLine:endLine:path/to/file.ts
-// relevant code snippet here
-```
-````
-
-**Rules:**
-
-- Always include at least 1 line of actual code content (empty blocks break rendering)
-- Use the exact line numbers from the diff
-- Do NOT add a language tag - the format is strictly `startLine:endLine:filepath`
-- Put a blank line before each code block
-- Include enough context (3-5 lines) for the snippet to be meaningful
+Use the shared `code-reference-formatting` skill. Do not redefine file-reference rules here.
 
 ---
 
@@ -254,7 +239,8 @@ The implementation uses caching to avoid repeated database lookups.
 
 **Files Changed:**
 
-```1:25:src/services/PermissionService.ts
+`src/services/PermissionService.ts:1:25`
+```ts
 export class PermissionService {
     private cache: Map<string, boolean>;
 
@@ -268,7 +254,8 @@ export class PermissionService {
 }
 ```
 
-```1:12:src/types/permissions.ts
+`src/types/permissions.ts:1:12`
+```ts
 export interface Permission {
     userId: string;
     resourceId: string;
@@ -278,7 +265,8 @@ export interface Permission {
 
 **Related Code:**
 
-```45:60:src/services/UserService.ts
+`src/services/UserService.ts:45:60`
+```ts
 // User context retrieval used by PermissionService
 async getUserContext(userId: string): Promise<UserContext> {
     // ...
@@ -310,7 +298,8 @@ Adds middleware that:
 
 **Files Changed:**
 
-```12:35:src/middleware/authMiddleware.ts
+`src/middleware/authMiddleware.ts:12:35`
+```ts
 export const checkPermissions = async (req, res, next) => {
     const user = req.context.user;
     const hasAccess = await permissionService.checkAccess(user.id, req.params.id);
@@ -321,7 +310,8 @@ export const checkPermissions = async (req, res, next) => {
 };
 ```
 
-```8:15:src/routes/users.ts
+`src/routes/users.ts:8:15`
+```ts
 router.get('/users/:id', checkPermissions, userController.getUser);
 router.put('/users/:id', checkPermissions, userController.updateUser);
 ```
