@@ -1,2 +1,10 @@
 # agentic-memetics
-ideas, skills, guides for AI agents
+
+Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
+
+- scripts/
+  - link-skills.sh: link ./skills/ to where coding agents look for skills, e.g. ~/.agents/skills/
+- skills/
+  - deep-code-review: perform a deep structured code review
+  - pr-walkthrough: walk through a PR in a semantic, structured way
+  - code-walkthrough: walk through and explain a feature
