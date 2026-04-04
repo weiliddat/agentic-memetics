@@ -26,6 +26,16 @@ Use:
 - `:start` when you want to point at a single line or an open-ended location
 - `:start:end` when you want a bounded range
 
+## Markdown Files
+
+When writing references **into** a Markdown file (`.md`, `.mdx`), use a Markdown link instead of a bare code span. The label keeps the human-readable `filepath[:start][:end]` form; the href uses a relative path with GitHub-flavored `#L<start>[-L<end>]` line fragments:
+
+- `[path/to/file.ts](../src/path/to/file.ts)` — whole file
+- `[path/to/file.ts:42](../src/path/to/file.ts#L42)` — single line
+- `[path/to/file.ts:42:57](../src/path/to/file.ts#L42-L57)` — bounded range
+
+Make the href path **relative to the Markdown file being written**, not relative to the project root. This keeps links portable across clones and forks.
+
 ## Preview Rules
 
 Always include an actual code preview immediately after the file reference.
@@ -37,7 +47,7 @@ Always include an actual code preview immediately after the file reference.
 
 ## Output Pattern
 
-Use this shape:
+### Terminal / agent output (default)
 
 ````markdown
 `path/to/file.ts:42:57`
@@ -48,7 +58,20 @@ const end = 57;
 ```
 ````
 
+### Inside a Markdown file
+
+````markdown
+[path/to/file.ts:42:57](../src/path/to/file.ts#L42-L57)
+```ts
+const start = 42;
+// ...
+const end = 57;
+```
+````
+
 ## Examples
+
+### Terminal / agent output
 
 Whole file:
 
@@ -94,5 +117,39 @@ export const beginWork = () => {
   finalize();
   return summary;
 };
+```
+````
+
+### Inside a Markdown file
+
+Whole file:
+
+````markdown
+[skills/code-reference-formatting/SKILL.md](../skills/code-reference-formatting/SKILL.md)
+```md
+# Code Reference Formatting
+...
+```
+````
+
+Single line:
+
+````markdown
+[skills/code-reference-formatting/SKILL.md:11](../skills/code-reference-formatting/SKILL.md#L11)
+```md
+Prefer a host's native clickable reference syntax when you know the current environment supports it.
+```
+````
+
+Bounded range:
+
+````markdown
+[skills/code-reference-formatting/SKILL.md:15:20](../skills/code-reference-formatting/SKILL.md#L15-L20)
+```md
+If you do not know a native format for the current environment, default to the portable form:
+
+- `path/to/file.ts`
+- `path/to/file.ts:42`
+- `path/to/file.ts:42:57`
 ```
 ````
