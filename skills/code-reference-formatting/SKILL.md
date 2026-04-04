@@ -1,6 +1,6 @@
 ---
 name: code-reference-formatting
-description: Format code references and previews in a portable way across coding agents and IDEs. Use when a skill or response needs file references, line ranges, or code excerpts that should stay readable and clickable across environments.
+description: Format code references and previews in a portable way across coding agents and IDEs. Use when a skill or response needs file references or code excerpts that should stay readable and clickable across environments.
 ---
 
 # Code Reference Formatting
@@ -12,27 +12,24 @@ Use this skill whenever you need to cite code in output. Other skills should poi
 Prefer a host's native clickable reference syntax when you know the current environment supports it.
 
 - Example: Cursor-native citation blocks in Cursor
-- Example: any IDE or terminal that reliably opens `filepath[:start][:end]`
+- Example: any IDE or terminal that reliably opens `filepath[:line]`
 
 If you do not know a native format for the current environment, default to the portable form:
 
 - `path/to/file.ts`
 - `path/to/file.ts:42`
-- `path/to/file.ts:42:57`
 
 Use:
 
 - path only when the whole file matters
-- `:start` when you want to point at a single line or an open-ended location
-- `:start:end` when you want a bounded range
+- `:line` when you want to point at a specific location (the code preview conveys the range)
 
 ## Markdown Files
 
-When writing references **into** a Markdown file (`.md`, `.mdx`), use a Markdown link instead of a bare code span. The label keeps the human-readable `filepath[:start][:end]` form; the href uses a relative path with GitHub-flavored `#L<start>[-L<end>]` line fragments:
+When writing references **into** a Markdown file (`.md`, `.mdx`), use a Markdown link instead of a bare code span. The label keeps the human-readable `filepath[:line]` form; the href uses a relative path with a `#L<line>` fragment:
 
 - `[path/to/file.ts](../src/path/to/file.ts)` — whole file
-- `[path/to/file.ts:42](../src/path/to/file.ts#L42)` — single line
-- `[path/to/file.ts:42:57](../src/path/to/file.ts#L42-L57)` — bounded range
+- `[path/to/file.ts:42](../src/path/to/file.ts#L42)` — specific location
 
 Make the href path **relative to the Markdown file being written**, not relative to the project root. This keeps links portable across clones and forks.
 
@@ -50,7 +47,7 @@ Always include an actual code preview immediately after the file reference.
 ### Terminal / agent output (default)
 
 ````markdown
-`path/to/file.ts:42:57`
+`path/to/file.ts:42`
 ```ts
 const start = 42;
 // ...
@@ -61,7 +58,7 @@ const end = 57;
 ### Inside a Markdown file
 
 ````markdown
-[path/to/file.ts:42:57](../src/path/to/file.ts#L42-L57)
+[path/to/file.ts:42](../src/path/to/file.ts#L42)
 ```ts
 const start = 42;
 // ...
@@ -83,7 +80,7 @@ Whole file:
 ```
 ````
 
-Single line or open-ended location:
+Specific location:
 
 ````markdown
 `skills/code-reference-formatting/SKILL.md:11`
@@ -92,23 +89,22 @@ Prefer a host's native clickable reference syntax when you know the current envi
 ```
 ````
 
-Bounded range:
+Location with longer preview:
 
 ````markdown
-`skills/code-reference-formatting/SKILL.md:15:20`
+`skills/code-reference-formatting/SKILL.md:15`
 ```md
 If you do not know a native format for the current environment, default to the portable form:
 
 - `path/to/file.ts`
 - `path/to/file.ts:42`
-- `path/to/file.ts:42:57`
 ```
 ````
 
 Long preview:
 
 ````markdown
-`path/to/large-file.ts:120:220`
+`path/to/large-file.ts:120`
 ```ts
 export const beginWork = () => {
   setup();
@@ -132,7 +128,7 @@ Whole file:
 ```
 ````
 
-Single line:
+Specific location:
 
 ````markdown
 [skills/code-reference-formatting/SKILL.md:11](../skills/code-reference-formatting/SKILL.md#L11)
@@ -141,15 +137,14 @@ Prefer a host's native clickable reference syntax when you know the current envi
 ```
 ````
 
-Bounded range:
+Location with longer preview:
 
 ````markdown
-[skills/code-reference-formatting/SKILL.md:15:20](../skills/code-reference-formatting/SKILL.md#L15-L20)
+[skills/code-reference-formatting/SKILL.md:15](../skills/code-reference-formatting/SKILL.md#L15)
 ```md
 If you do not know a native format for the current environment, default to the portable form:
 
 - `path/to/file.ts`
 - `path/to/file.ts:42`
-- `path/to/file.ts:42:57`
 ```
 ````
