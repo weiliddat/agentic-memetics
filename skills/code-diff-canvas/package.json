@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@pierre/diffs": "^1.1.19"
+  }
+}

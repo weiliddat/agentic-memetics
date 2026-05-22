@@ -1,0 +1,36 @@
+{
+  "title": "Mixed blocks: prose, code chunks, regrouped diffs",
+  "subtitle": "Demonstrates how an agent can interleave commentary, raw code, and diffs in any order.",
+  "blocks": [
+    {
+      "type": "prose",
+      "markdown": "## Why this PR matters\n\nThe old `Logger` API silently swallowed errors. We fix that and add a structured event channel."
+    },
+    {
+      "type": "code",
+      "name": "src/log/types.ts",
+      "note": "New shared types live here. Pure additive — nothing was removed.",
+      "contents": "export type LogLevel = 'debug' | 'info' | 'warn' | 'error';\n\nexport interface LogEvent {\n  level: LogLevel;\n  message: string;\n  timestamp: number;\n  data?: Record<string, unknown>;\n}\n"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Logger.error: stop swallowing\n\nThis is the main behavior change. Before, errors were caught and dropped on the floor — now they propagate."
+    },
+    {
+      "type": "diff",
+      "name": "src/log/Logger.ts",
+      "note": "Regrouped: the agent extracted just the `error()` method, ignoring unrelated formatting churn elsewhere in the file.",
+      "before": "export class Logger {\n  error(msg: string, err?: unknown) {\n    try {\n      this.write({ level: 'error', message: msg, timestamp: Date.now() });\n    } catch {\n      // swallow\n    }\n  }\n}\n",
+      "after":  "export class Logger {\n  error(msg: string, err?: unknown) {\n    const event: LogEvent = {\n      level: 'error',\n      message: msg,\n      timestamp: Date.now(),\n      data: err instanceof Error ? { name: err.name, stack: err.stack } : undefined,\n    };\n    this.write(event);\n    this.emit(event);\n  }\n}\n"
+    },
+    {
+      "type": "prose",
+      "markdown": "## Wiring: subscribe to the event channel\n\nHere's how a caller adopts the new structured channel. This isn't part of the diff — it's a usage example."
+    },
+    {
+      "type": "code",
+      "name": "examples/subscribe.ts",
+      "contents": "import { logger } from './logger';\n\nlogger.on('error', (e) => {\n  reportToSentry(e);\n});\n"
+    }
+  ]
+}

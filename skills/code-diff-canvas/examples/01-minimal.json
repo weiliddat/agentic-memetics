@@ -1,0 +1,17 @@
+{
+  "title": "Minimal example",
+  "subtitle": "One synthesized diff from before/after.",
+  "blocks": [
+    {
+      "type": "prose",
+      "markdown": "Adding **TypeScript types** to a small helper. The change is mechanical but worth showing in context."
+    },
+    {
+      "type": "diff",
+      "name": "src/math/add.ts",
+      "note": "Annotate `add` with explicit `number` types so callers get inference at the boundary.",
+      "before": "export function add(a, b) {\n  return a + b;\n}\n\nexport function sum(xs) {\n  return xs.reduce((acc, x) => add(acc, x), 0);\n}\n",
+      "after":  "export function add(a: number, b: number): number {\n  return a + b;\n}\n\nexport function sum(xs: readonly number[]): number {\n  return xs.reduce((acc, x) => add(acc, x), 0);\n}\n"
+    }
+  ]
+}

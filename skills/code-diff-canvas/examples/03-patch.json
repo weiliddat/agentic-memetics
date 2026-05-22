@@ -1,0 +1,14 @@
+{
+  "title": "Raw unified patch",
+  "subtitle": "Output of `git diff` / `gh pr diff`, fed straight in.",
+  "blocks": [
+    {
+      "type": "prose",
+      "markdown": "Sometimes you have a real patch and don't want to reconstruct before/after. The `patch` block type splits multi-file patches into one diff host per file."
+    },
+    {
+      "type": "patch",
+      "patch": "diff --git a/src/server.ts b/src/server.ts\nindex 1111111..2222222 100644\n--- a/src/server.ts\n+++ b/src/server.ts\n@@ -1,8 +1,10 @@\n import express from 'express';\n+import { logger } from './log';\n \n const app = express();\n \n app.get('/health', (_req, res) => {\n+  logger.info('health check');\n   res.send('ok');\n });\n \ndiff --git a/src/log/index.ts b/src/log/index.ts\nnew file mode 100644\nindex 0000000..3333333\n--- /dev/null\n+++ b/src/log/index.ts\n@@ -0,0 +1,5 @@\n+export const logger = {\n+  info: (msg: string) => console.log(`[info] ${msg}`),\n+  warn: (msg: string) => console.warn(`[warn] ${msg}`),\n+  error: (msg: string) => console.error(`[error] ${msg}`),\n+};\n"
+    }
+  ]
+}
