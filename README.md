@@ -10,3 +10,9 @@ Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
   - deep-code-review: perform a deep structured code review
   - pr-walkthrough: walk through a PR in a semantic, structured way
   - code-walkthrough: walk through and explain a feature
+  - thermo-nuclear-review: audit a change set for correctness, security, breakage, and feature-gate leaks
+  - thermo-nuclear-code-quality-review: apply a strict maintainability and structural-simplification rubric
+  - thermos: delegate both thermo-nuclear reviews and synthesize their findings
+  - deep-thermos: run deep-code-review plus both thermo-nuclear passes in one wave and synthesize a single report
+
+See [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) for third-party work adapted by this repository.

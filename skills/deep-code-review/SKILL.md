@@ -1,6 +1,6 @@
 ---
 name: deep-code-review
-description: Perform a deep, structured, multi-phase code review as a senior staff engineer. Covers PR context gathering, semantic grouping of changes, parallel per-group subagent review across multiple quality criteria, and a final holistic PR evaluation. Use when asked to do a thorough or comprehensive code review, review a PR in depth, or review code changes critically.
+description: Perform a deep, structured, multi-phase code review as a senior staff engineer. Covers PR context gathering, semantic grouping of changes, parallel per-group subagent review across multiple quality criteria, and a final holistic PR evaluation. Use only when the user explicitly asks for deep-code-review, or for a deep, thorough, or in-depth review of a PR or change set. Do not invoke it as a follow-up to unrelated work.
 ---
 
 # Deep Code Review
@@ -66,7 +66,7 @@ Group: <Name>
 ...
 ```
 
-Verify every changed file appears in exactly one group. If a file is ambiguous, place it in the most relevant group and note it.
+Verify every changed file appears in at least one group. If a file is ambiguous, place it in the most relevant group and note it.
 
 ---
 
