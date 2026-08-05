@@ -15,6 +15,20 @@ command -v tmux >/dev/null 2>&1 || {
 	exit 127
 }
 
+# Warn rather than fail: on an old tmux it is still better to report what is
+# running than to refuse. Version strings look like "tmux 3.7b" or "tmux next-3.5".
+version="$(tmux -V | grep -oE '[0-9]+\.[0-9]+' | head -1)"
+if [ -n "$version" ]; then
+	major="${version%%.*}"
+	minor="${version##*.}"
+	if [ "$major" -lt 3 ] || { [ "$major" -eq 3 ] && [ "$minor" -lt 4 ]; }; then
+		echo "WARNING: tmux $version is older than the required 3.4." >&2
+		echo "         pane_dead_signal is unavailable, so a process killed by C-c" >&2
+		echo "         will report exit=unknown instead of the signal." >&2
+		echo >&2
+	fi
+fi
+
 if [ ! -S "$SOCKET" ]; then
 	echo "socket:   absent    $SOCKET"
 	echo "server:   not running"

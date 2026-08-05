@@ -9,7 +9,7 @@ description: Run, watch, and interrupt long-lived processes (dev servers, watche
 
 If `npm test` finishes on its own and you just want the output, run it directly. Reach for tmux when the process outlives the command: a dev server, `--watch`, a REPL, a debugger, anything you will come back to or send keys to.
 
-Requires tmux >= 3.0. If tmux is not installed, say so and stop — do not fall back to backgrounding with `&`.
+Requires tmux >= 3.4 (`pane_dead_signal`, without which a process killed by C-c cannot be distinguished from one that vanished). If tmux is missing or older, say so and stop — do not fall back to backgrounding with `&`.
 
 ## The model
 
