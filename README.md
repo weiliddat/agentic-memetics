@@ -14,5 +14,6 @@ Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
   - thermo-nuclear-code-quality-review: apply a strict maintainability and structural-simplification rubric
   - thermos: delegate both thermo-nuclear reviews and synthesize their findings
   - deep-thermos: run deep-code-review plus both thermo-nuclear passes in one wave and synthesize a single report
+  - tmux: run, watch, and interrupt long-lived processes on an isolated tmux server a human can also attach to
 
 See [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) for third-party work adapted by this repository.
