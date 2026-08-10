@@ -9,7 +9,8 @@ Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
   - code-diff-canvas: render code chunks and diffs as a self-contained HTML page (Pierre Diffs + Shiki, SSR)
   - deep-code-review: perform a deep structured code review
   - pr-walkthrough: walk through a PR in a semantic, structured way
-  - maintain-pr-context: maintain an ephemeral PR.md as the source of truth for Linear-linked branch work
+  - setup-pr-context: install shared branch-aware PR.md storage and additive checkout synchronization
+  - maintain-pr-context: maintain the current branch's shared PR.md as the source of truth for Linear-linked work
   - code-walkthrough: walk through and explain a feature
   - thermo-nuclear-review: audit a change set for correctness, security, breakage, and feature-gate leaks
   - thermo-nuclear-code-quality-review: apply a strict maintainability and structural-simplification rubric

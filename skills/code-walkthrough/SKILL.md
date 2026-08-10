@@ -1,6 +1,6 @@
 ---
 name: code-walkthrough
-description: Walk through code or a feature by reading relevant files, identifying logical sections, and explaining each with clear intent and technical details. Use when the user asks to understand, explain, or walk through code, a module, a feature, or part of a codebase.
+description: Walk through code or a feature by reading relevant files, identifying logical sections, and explaining each with clear intent and technical details. Use when the user asks to understand, explain, or walk through code, a module, a feature, or part of a codebase. Use only when the user explicitly asks for code-walkthrough or a code walkthrough.
 ---
 
 # Code Walkthrough

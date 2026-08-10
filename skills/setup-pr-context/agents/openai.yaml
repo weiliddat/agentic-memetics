@@ -1,0 +1,4 @@
+interface:
+  display_name: "Set Up PR Context"
+  short_description: "Install shared branch-aware PR notes"
+  default_prompt: "Use $setup-pr-context to install or repair shared branch-aware PR.md handling for this clone."

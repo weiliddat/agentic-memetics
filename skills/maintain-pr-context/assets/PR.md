@@ -1,10 +1,14 @@
+<!-- pr-context: active -->
+
 # PR Working Context
 
 - Linear issue: <identifier, title, and link when available>
 - Branch: <current branch>
 - Last updated: <YYYY-MM-DD>
 
-## Goal and scope
+<!-- Current state is rewritten in place: always present-tense truth about the work as it stands now. No "previously", "we changed this to", or iteration narrative here — that belongs in History. -->
+
+## Current state
 
 ### Goal
 
@@ -18,19 +22,17 @@
 
 - <Explicit boundary>
 
-## Past considerations
+### Constraints and prior context
 
-- <Relevant constraint, prior attempt, rejected alternative, or historical context, with rationale>
+- <Constraint inherited from before this PR — prior attempt, rejected direction, Linear discussion, or system limitation that shapes the current design, with rationale>
 
-## Product decisions
+### Product decisions
 
-- <Decision and why it serves the intended behavior>
+- <Decision as a present-tense fact, and why it serves the intended behavior>
 
-## Technical decisions
+### Technical decisions
 
-- <Decision, rationale, important tradeoff, and rejected alternative when useful>
-
-## Implementation plan and current state
+- <Decision as a present-tense fact, rationale, important tradeoff, and rejected alternative when it explains the choice>
 
 ### Implemented approach
 
@@ -40,22 +42,30 @@
 
 - [ ] <Planned item>
 
-## Accepted defects, deferrals, and considerations
+### Accepted deviations, risks, and deferrals
 
 | Item | Status | Impact and rationale | Follow-up |
 | --- | --- | --- | --- |
-| <Known issue, risk, or deferred work> | <accepted defect / deferred / consideration> | <User or technical impact and why it is acceptable> | <Issue, owner, condition, or none> |
+| <Known issue, risk, or deferred work> | <accepted defect / deferred / risk> | <User or technical impact and why it is acceptable> | <Issue, owner, condition, or none> |
 
-## QA and validation
+### QA and validation
 
-### Automated checks
+#### Automated checks
 
 - [ ] `<exact command>` — Expected: <result>
 
-### Manual or product QA
+#### Manual or product QA
 
 - [ ] <Steps or scenario> — Expected: <observable behavior>
 
-### Results
+#### Results
 
 - Not run yet.
+
+<!-- History is append-only: dated entries, newest last, never edited retroactively. Record what changed and why — approaches tried and rejected, review findings and their resolutions, direction changes. Reference decisions in Current state instead of restating them; when the two disagree, Current state is authoritative. -->
+
+## History
+
+### <YYYY-MM-DD> — <short title of the iteration or event>
+
+- <What changed, what was tried and rejected, or what review found and how it was resolved>
