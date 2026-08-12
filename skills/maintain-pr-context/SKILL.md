@@ -59,9 +59,20 @@ Keep every template section. `Current state` holds goal and scope, constraints a
 When asked to draft or create the pull request:
 
 1. Refresh active `PR.md` from the implemented diff and latest validation results.
-2. Draft from the `Current state` half: goal, scope, implemented approach, reviewer-relevant product and technical decisions, accepted limitations or follow-ups, and exact QA evidence.
-3. Link the Linear issue when a link is available.
-4. Omit `History` and other internal process detail unless a specific entry materially helps review the chosen implementation.
-5. Confirm neither the root `PR.md` symlink nor its external target is staged or included in the pull-request diff.
+2. Write a standalone description for a reviewer who can see the pull request, its diff, linked issues, and checks, but none of the private working context or agent workflow that produced it. Every included detail should help them understand the change, evaluate a decision or risk, navigate the diff, or validate the behavior.
+3. Draft from the present implementation and evidence, using `Current state` as source material rather than copying its structure or wording. Use `History` only to recover an explored alternative or rationale that remains relevant to understanding the final design.
+4. Organize the description around the reviewer's questions, using only the sections the change needs:
+   - What goal or user problem does this solve, and what is in scope?
+   - What constraints or plausible approaches mattered, what was considered, and why was the chosen direction selected?
+   - What behavior and implementation changed?
+   - What tradeoffs, risks, limitations, or follow-ups should the reviewer know about?
+   - How was it validated, with exact observed results rather than planned checks?
+   - Where should review begin, which files or flows deserve attention, and how can the reviewer manually exercise the change?
+5. Explain decisions and rejected alternatives in plain domain and technical terms. Include exploration only when it clarifies the resulting design or a meaningful tradeoff; omit chronological iteration logs and dead ends that do not affect review.
+6. Remove references to information or process the reviewer cannot inspect, including `PR.md`, separate PR context, agent activity, internal review passes such as deep thermos, and how the description was assembled. Preserve any useful finding by stating the underlying fact, risk, decision, or fix directly. For example, replace “deep thermos found an unsafe fallback” with an explanation of the unsafe fallback and how this change handles it.
+7. Link the Linear issue when a link is available. Identify other context by a reviewer-visible name and link when it is necessary to understand the change; otherwise summarize the relevant point in the description.
+8. Keep validation reproducible and candid: distinguish automated checks from manual scenarios, report failures or skipped coverage, and do not imply that the reviewer needs access to private tooling.
+9. Read the result once from the reviewer's perspective. Remove self-referential process language, unexplained internal shorthand, claims without visible evidence, and implementation detail that does not help assess the change.
+10. Confirm neither the root `PR.md` symlink nor its external target is staged or included in the pull-request diff.
 
 Retain each branch file while its branch work, review, or QA follow-up remains active. Remove it only during confirmed PR cleanup or when the user explicitly asks.
