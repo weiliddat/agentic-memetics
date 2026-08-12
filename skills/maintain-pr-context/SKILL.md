@@ -10,7 +10,7 @@ Keep the current branch's shared `PR.md` as a concise working brief. Make it use
 ## Resolve the current branch document
 
 1. Find the repository root, current branch or detached state, working-tree status, and root `PR.md` file type, target, tracking, and ignore state.
-2. Expect `PR.md` to be a managed symlink to the current branch's file in the shared external store. Verify the resolved target rather than trusting the root pathname alone.
+2. Expect `PR.md` to be a managed symlink to the current branch's file in the shared external store. Verify the resolved target rather than trusting the root pathname alone. Some harnesses' file read or write tools refuse symlink paths; when the root `PR.md` path fails, resolve it (e.g. `realpath PR.md`) and operate on the resolved target path directly. Never replace the symlink with a regular file because a read or write to the link path failed.
 3. If setup is absent, broken, or points at another branch, read [`../setup-pr-context/SKILL.md`](../setup-pr-context/SKILL.md) in full and follow its inspect or repair workflow. Do not overwrite a regular file, tracked file, unmanaged symlink, or another branch's context.
 4. Read the resolved file in full before planning or changing code when it contains `<!-- pr-context: active -->` or otherwise clearly contains active PR working context.
 5. Treat a zero-byte file and `<!-- pr-context: inactive -->` notice as no active context. Their existence alone must not activate this skill or expand task scope.
@@ -36,7 +36,7 @@ Keep the current branch's shared `PR.md` as a concise working brief. Make it use
    - A Linear issue identifier or link appears in the request or available work context.
 2. If either initial condition is absent, leave an empty branch file inactive. Explicit invocation overrides this gate.
 3. Gather the Linear issue's goal, requirements, constraints, discussion, and acceptance criteria through any available issue integration. If the issue cannot be accessed, record only available context and mark gaps rather than guessing.
-4. Locate [`assets/PR.md`](assets/PR.md) relative to this `SKILL.md`. Populate its complete structure, then write it through the managed root symlink to the current branch's external file. Preserve the asset as the reusable template.
+4. Locate [`assets/PR.md`](assets/PR.md) relative to this `SKILL.md`. Populate its complete structure, then write it to the current branch's external file that the managed root symlink resolves to — write to the resolved target path if the tooling refuses the symlink path. Preserve the asset as the reusable template.
 5. Replace prompts with concrete content. Use `None yet` where an empty section would be ambiguous. Preserve the `<!-- pr-context: active -->` marker.
 6. If active context already exists, confirm its branch metadata matches and continue from it instead of recreating it. Reconcile mismatches before editing.
 
