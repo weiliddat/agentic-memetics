@@ -32,7 +32,10 @@ rg '\bOLD_NAME\b' -l
 - Files changed (count + list)
 - Renamed identifiers (if any): list every old name → new name pair
 - Type/shape changes (if any): list every field whose type changed (e.g., scalar → array, optional → required, string → enum) with old and new types
+- Behavioral compatibility shortlist (if any): apply `references/behavioral-compatibility.md` and record its material old → new decisions, at-risk paths, and failure-boundary changes
 - Files outside the diff that still reference old names (from the grep above) — these **must** be included in Phase 2 grouping and reviewed in Phase 3
+
+Read that shared guide completely before producing the shortlist. It is the source of truth for behavioral-path selection, tracing depth, failure-boundary analysis, and reporting discipline.
 
 ---
 
@@ -68,6 +71,8 @@ Group: <Name>
 
 Verify every changed file appears in at least one group. If a file is ambiguous, place it in the most relevant group and note it.
 
+Also verify every shortlisted behavioral decision and at-risk path from Phase 1 is owned by a group. Cross-cutting paths may belong to more than one group; tell the affected subagents that they share the path.
+
 ---
 
 ## Phase 3: Deep Review — Per-Group Subagents
@@ -94,6 +99,8 @@ For every match in a file not in the diff: read the file, assess whether the old
    - **UI interaction fit**: If a UI control changed to match the new type (e.g., single→multi select), is the interaction pattern intuitive without hidden modifiers like Ctrl/Cmd+click?
    - **Test coverage for new paths**: Are there tests exercising the new validation rules and edge cases, not just the happy path?
 
+6. **Behavioral compatibility** — for the shortlist assigned to the group, read and apply `references/behavioral-compatibility.md` completely. Use out-of-diff code as impact evidence without reporting unrelated pre-existing defects.
+
 For each file in the group, evaluate on all criteria:
 
 ### Review Criteria (apply to every file)
@@ -103,6 +110,8 @@ For each file in the group, evaluate on all criteria:
 | **Intent & achievement** | What was the goal? Was it achieved cleanly? Any shortcuts? |
 | **Code quality** | Is it readable, well-structured, idiomatic? Unnecessary complexity? |
 | **Correctness & reliability** | Are there logic bugs, missing edge cases, race conditions, off-by-ones? |
+| **Behavioral compatibility** | Which existing paths changed outcome? Do old callers, defaults, variants, and background workflows still behave as before unless intentionally migrated? |
+| **Failure containment** | Does failure match the intended atomicity boundary? Would added catching hide errors or allow unsafe partial progress, or would missing isolation abort genuinely independent work? |
 | **Misuse potential** | Can a developer or user trigger unintended behavior? Are APIs/interfaces confusing? |
 | **Risk** | What can go wrong in production? Data loss, silent failures, bad defaults? |
 | **Alternatives** | Is there a simpler or more idiomatic approach that achieves the same goal? |
@@ -258,6 +267,8 @@ relevant code excerpt
 Answer each of the following:
 
 - **Scope completeness**: Are there obvious omissions from the stated goal/spec? What's missing?
+- **Behavioral compatibility**: For the high-risk changed decision points, were behaviorally distinct pre-existing entry points and variants compared against the merge base? Call out any unintended outcome change or unverified high-risk path.
+- **Failure containment**: Do new setup and I/O failures remain scoped to the intended item, tenant, request, or batch? Call out enlarged blast radii.
 - **Rename coverage** *(mandatory if any identifier was renamed)*: Were all usages of the old name updated? Confirm subagent rename searches found no remaining references in files outside the diff. Call out any that remain.
 - **Structural / design concerns**: Any architectural issues that span multiple groups?
 - **Simplicity**: Is the PR as concise as possible, or does it contain unnecessary changes or complexity?
