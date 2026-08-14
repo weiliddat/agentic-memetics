@@ -21,7 +21,7 @@ Keep the current branch's shared `PR.md` as a concise working brief. Make it use
 - Treat matching active context as the primary statement of work scope, decisions, plan, deferrals, and validation. Reconcile contradictions with the user, Linear issue, code, or test results instead of silently choosing one.
 - Update the document after every material discovery, decision, scope change, implementation milestone, accepted defect or deferral, and validation result.
 - Refresh `Last updated` whenever making a material update.
-- Maintain the two halves with different edit disciplines. `Current state` is rewritten in place: always the present-tense truth about the work as it stands, with no iteration narrative, "previously", or "changed X to Y". `History` is append-only: dated entries added at the bottom, never edited retroactively.
+- Maintain the two halves with different edit disciplines. `Current state` is rewritten in place: always the present-tense truth about the work as it stands, with no iteration narrative, "previously", or "changed X to Y". `History` is append-only: dated entries added at the bottom, never edited retroactively. Keep it focused on meaningful PR evolution: decisions, scope or direction changes, rejected approaches whose rationale still matters, and significant findings and resolutions. Do not append routine chores such as branch updates, merges or rebases to or from the default branch, conflict-free synchronizations, formatting-only passes, or other repository housekeeping. Record such an event only when it materially changes the PR's scope, design, behavior, risks, or validation evidence; describe that consequence rather than the chore itself.
 - Do not duplicate content across the halves. A decision lives in `Current state`; the `History` entry records when and why it changed, referencing it rather than restating it. When the halves disagree, `Current state` is authoritative — fix the divergence.
 - Distinguish context inherited from before this PR (prior attempts, Linear discussion, system constraints) from iteration within this PR. The former belongs in `Constraints and prior context`; the latter belongs in `History`.
 - When `History` grows long, compact entries that later entries supersede into dated one-liners instead of deleting them.
@@ -40,7 +40,7 @@ Keep the current branch's shared `PR.md` as a concise working brief. Make it use
 5. Replace prompts with concrete content. Use `None yet` where an empty section would be ambiguous. Preserve the `<!-- pr-context: active -->` marker.
 6. If active context already exists, confirm its branch metadata matches and continue from it instead of recreating it. Reconcile mismatches before editing.
 
-Keep every template section. `Current state` holds goal and scope, constraints and prior context, product decisions, technical decisions, implemented approach and work items, accepted deviations and deferrals, and QA expectations and results. `History` holds the append-only dated iteration log.
+Keep every template section. Use `Current state` for the present truth and `History` for meaningful changes over time.
 
 ## Maintain it during implementation
 

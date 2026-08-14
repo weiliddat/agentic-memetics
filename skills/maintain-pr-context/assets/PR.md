@@ -62,7 +62,7 @@
 
 - Not run yet.
 
-<!-- History is append-only: dated entries, newest last, never edited retroactively. Record what changed and why — approaches tried and rejected, review findings and their resolutions, direction changes. Reference decisions in Current state instead of restating them; when the two disagree, Current state is authoritative. -->
+<!-- History is append-only: dated entries, newest last, never edited retroactively. Record meaningful PR evolution and why it matters — approaches tried and rejected, review findings and their resolutions, scope or direction changes. Omit routine chores such as branch updates, merges or rebases to or from the default branch, conflict-free synchronizations, formatting-only passes, and other repository housekeeping. Include one only when it materially changes the PR's scope, design, behavior, risks, or validation evidence, and describe that consequence rather than the chore itself. Reference decisions in Current state instead of restating them; when the two disagree, Current state is authoritative. -->
 
 ## History
 
