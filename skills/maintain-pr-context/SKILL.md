@@ -66,12 +66,12 @@ When asked to draft or create the pull request:
    - What constraints or plausible approaches mattered, what was considered, and why was the chosen direction selected?
    - What behavior and implementation changed?
    - What tradeoffs, risks, limitations, or follow-ups should the reviewer know about?
-   - How was it validated, with exact observed results rather than planned checks?
+   - How was it validated in ways the reviewer cannot see from CI — manual scenarios, environment-specific checks, and coverage deliberately left out?
    - Where should review begin, which files or flows deserve attention, and how can the reviewer manually exercise the change?
 5. Explain decisions and rejected alternatives in plain domain and technical terms. Include exploration only when it clarifies the resulting design or a meaningful tradeoff; omit chronological iteration logs and dead ends that do not affect review.
 6. Remove references to information or process the reviewer cannot inspect, including `PR.md`, separate PR context, agent activity, internal review passes such as deep thermos, and how the description was assembled. Preserve any useful finding by stating the underlying fact, risk, decision, or fix directly. For example, replace “deep thermos found an unsafe fallback” with an explanation of the unsafe fallback and how this change handles it.
 7. Link the Linear issue when a link is available. Identify other context by a reviewer-visible name and link when it is necessary to understand the change; otherwise summarize the relevant point in the description.
-8. Keep validation reproducible and candid: distinguish automated checks from manual scenarios, report failures or skipped coverage, and do not imply that the reviewer needs access to private tooling.
+8. Keep validation reproducible and candid, but do not restate what the platform already reports: omit pass counts, timings, and per-suite results for checks that run in CI. Describe manual and product QA the reviewer would otherwise have to guess at, and state failures, known-flaky areas, or skipped coverage explicitly, since a green build does not reveal them. Do not imply that the reviewer needs access to private tooling.
 9. Read the result once from the reviewer's perspective. Remove self-referential process language, unexplained internal shorthand, claims without visible evidence, and implementation detail that does not help assess the change.
 10. Confirm neither the root `PR.md` symlink nor its external target is staged or included in the pull-request diff.
 
