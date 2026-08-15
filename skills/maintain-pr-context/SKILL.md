@@ -29,6 +29,13 @@ Keep the current branch's shared `PR.md` as a concise working brief. Make it use
 - Verify that the recorded branch matches the current branch and resolved store path before relying on the document.
 - Do not commit or stage the root symlink or external context file.
 
+## Writing register
+
+- `PR.md` is a technical working document. Write concisely and factually, without rhetoric or meta-discourse.
+- Match each entry's length to what its content needs: cover the substance — the fact, the decision, the reason — but do not pad with filler, redundant summaries, restated section context, or boilerplate.
+- State facts and decisions directly. Do not narrate ("we then explored…"), editorialize ("importantly", "it's worth noting"), signpost, or add transitions and framing sentences. Every entry should be independently understandable.
+- Focus on answers and content, not style. Respect the reader's time and intellect. Don't point out turn-of-events like nuance, surprise, understanding to the reader. They will get it through the facts.
+
 ## Start or resume active context
 
 1. For initial implicit activation, confirm both conditions:
