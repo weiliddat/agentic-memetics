@@ -1,7 +1,6 @@
 ---
 name: wait-what
-description: Rewrite the previous response (or a passage the user points at) concisely and factually, stripping rhetoric, narration, and meta-discourse while preserving all substance. Use when the user invokes wait-what or asks for a response to be rephrased, restated plainly, or de-cluttered.
-disable-model-invocation: true
+description: Rewrite the previous response (or a passage the user points at) concisely and factually, stripping rhetoric, narration, and meta-discourse while preserving all substance. Use ONLY when the user says "wait what" in any form — "wait-what", "/wait-what", "wait, what?", "wait what??" — anywhere in their message, including mid-sentence. That phrase alone is the trigger, wherever it appears and whether it reads as a command or as genuine confusion. Do NOT use for any other request to shorten, summarize, clarify, simplify, reword, or re-explain something.
 ---
 
 # Wait What
