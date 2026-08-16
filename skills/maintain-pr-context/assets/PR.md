@@ -62,10 +62,32 @@
 
 - Not run yet.
 
-<!-- History is append-only: dated entries, newest last, never edited retroactively. Record meaningful PR evolution and why it matters — approaches tried and rejected, review findings and their resolutions, scope or direction changes. Omit routine chores such as branch updates, merges or rebases to or from the default branch, conflict-free synchronizations, formatting-only passes, and other repository housekeeping. Include one only when it materially changes the PR's scope, design, behavior, risks, or validation evidence, and describe that consequence rather than the chore itself. Reference decisions in Current state instead of restating them; when the two disagree, Current state is authoritative. -->
+<!-- History is append-only in substance: add dated entries immediately before Appendix, newest last, and do not change their meaning retroactively. Losslessly compact superseded entries into dated one-liners only when History grows long. Record meaningful PR evolution and why it matters — approaches tried and rejected, review findings and their resolutions, scope or direction changes. Omit routine chores such as branch updates, merges or rebases to or from the default branch, conflict-free synchronizations, formatting-only passes, and other repository housekeeping. Include one only when it materially changes the PR's scope, design, behavior, risks, or validation evidence, and describe that consequence rather than the chore itself. Reference decisions in Current state instead of restating them; when the two disagree, Current state is authoritative. -->
 
 ## History
+
+None yet.
+
+<!-- Replace "None yet" with dated entries in this format:
 
 ### <YYYY-MM-DD> — <short title of the iteration or event>
 
 - <What changed, what was tried and rejected, or what review found and how it was resolved>
+
+Add each new History entry immediately above the Appendix boundary below, newest last.
+-->
+
+<!-- Appendix starts below. Keep this boundary after all History entries. -->
+
+## Appendix
+
+<!-- Put only oversized supporting material here, such as large diagrams, figures, raw data, detailed tables, logs, or exhaustive analysis. Summarize each item's conclusions or findings in the relevant Current state or History entry and link that summary directly to the appendix subsection, for example: [Supporting data](#supporting-data). Do not leave decisions, findings, risks, or results only in the Appendix. Before rewriting a linked Current state summary, preserve its concise finding and link in History when they remain meaningful; otherwise update or remove the now-uncited material. Preserve material cited by History, adding a new subsection when later evidence differs. Use "None yet" when no appendix material is needed. -->
+
+None yet.
+
+<!-- When needed, replace "None yet" with titled subsections whose headings provide stable Markdown link targets, for example:
+
+### <Descriptive title>
+
+<Large diagram, figure, data, table, log, or detailed analysis>
+-->
