@@ -44,7 +44,7 @@ Take the reader from intent to implementation to consequences. Show relevant ent
 
 Optimize signal by validating, contextualizing, and deduplicating findings—not by omitting confirmed actionable defects that do not fit the main story. Briefly group such defects where they are easiest to understand. An accepted tradeoff does not excuse an implementation that fails the chosen contract.
 
-Use the harness's presentation conventions for links, snippets, and diagrams. Where citation conventions are unspecified, consult [code-reference-formatting/SKILL.md](../code-reference-formatting/SKILL.md) for reference selection. Include excerpts or diagrams when they reduce the reader's effort, not as decoration or a requirement for every finding.
+Use the harness's native file-and-line-range links and code snippets to ground the critique in relevant code. Include snippets or diagrams when they reduce the reader's effort, not as decoration or a requirement for every finding.
 
 Scale the investigation and explanation to semantic impact, uncertainty, and the reader's needs—not lines changed. A small decision with broad downstream effects may warrant a deep account; a large mechanical change may need only a concise explanation and convincing preservation evidence. Compress uncontroversial details and spend attention on consequential choices. State material verification limits without dumping an investigation log. No fixed report length or section template is required.
 
