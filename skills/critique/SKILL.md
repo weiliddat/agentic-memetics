@@ -1,11 +1,13 @@
 ---
 name: critique
-description: "Evaluates work through its intent, effectiveness, and the value of its design and tradeoffs, presenting a critical walkthrough that helps the reader understand and judge it. Use only when the user explicitly asks for critique by name. Do not invoke for generic review requests, deep reviews, walkthroughs, or as an automatic follow-up to implementation."
+description: "Evaluates work—code or otherwise—through its intent, effectiveness, execution, and the value of its design and tradeoffs, presenting a critical walkthrough that helps the reader understand and judge it. Use only when the user explicitly asks for critique by name. Do not invoke for generic review requests, deep reviews, walkthroughs, or as an automatic follow-up to implementation."
 ---
 
 # Critique
 
 Help the reader understand and judge the work: **what was it trying to achieve, did it succeed, and was it worth it?** Defect detection belongs inside that evaluation, not as its organizing principle.
+
+The work can be code, a design, prose, a UI, tests, or a plan. This guidance is written for software; adapt its terms for other kinds of work.
 
 The reader may not know every aspect of the scope, design, constraints, or decisions, especially when agents have done substantial independent work. Reconstruct enough of that context to make your judgment intelligible. Do not assume the original request, current description, implementation, and reader's mental model still agree.
 
@@ -13,9 +15,9 @@ The reader may not know every aspect of the scope, design, constraints, or decis
 
 **What was it trying to achieve?** Establish the problem, desired outcomes, constraints, and principles behind the work. Distinguish explicitly stated intent, intent inferred from the work, and observed behavior. Consider how decisions evolved and whether the resulting design still serves the goal. Do not invent a rationale that makes the implementation seem inevitable, or call a tradeoff accepted without evidence that it was accepted.
 
-**Did it succeed?** Understand how the design produces its effects and whether actual behavior fulfills the intended outcomes. Look beyond local plausibility to relevant interactions, existing uses, and consequences. Examine whether the mental model is coherent and consistently applied: does it predict what the implementation does, or do different paths rely on incompatible assumptions? Bugs, omissions, surprising behavior, and incomplete consideration matter insofar as they undermine the work. Your initial difficulty understanding it is a reason to investigate, not by itself evidence of a design flaw.
+**Did it succeed?** Understand how the design produces its effects and whether actual behavior fulfills the intended outcomes. Look beyond local plausibility to relevant interactions, existing uses, and consequences. Examine whether the mental model is coherent and consistently applied: does it predict what the implementation does, or do different paths rely on incompatible assumptions? Judge the execution, not only the result. Good execution does the job with no more than it needs: less code rather than more, direct rather than convoluted, every part doing something. Single-use abstractions, indirection that only forwards, guards against states that cannot occur, and duplicated logic that must be kept in sync are execution flaws even when the behavior is correct. Judge this against the problem and the conventions of the surrounding work, not your own preferences. Bugs, omissions, surprising behavior, and incomplete consideration matter insofar as they undermine the work. Your initial difficulty understanding it is a reason to investigate, not by itself evidence of a design flaw.
 
-**Was it worth it?** Evaluate the goal as well as the execution. Is this the right problem to solve, and are the benefits worth the complexity, operational risk, and current and future effort required to understand, maintain, and scale the result? Consider the constraints under which the work was done, not an imaginary unconstrained ideal. Look for substantially simpler ways to achieve the intent, including doing less or leaving the system alone. Explain what an alternative gains and gives up; a different design is not automatically a better one.
+**Was it worth it?** Evaluate the goal as well as the execution. Is this the right problem to solve, and are the benefits worth the complexity, operational risk, and current and future effort required to understand, maintain, and scale the result? Include the form of the work in that cost. Simple, concise code is cheaper to understand and maintain than long, convoluted, or redundant code, and every future reader pays that cost again. Prefer less over more when both serve the intent. Count form that makes the work harder to understand; do not count matters of taste. Consider the constraints under which the work was done, not an imaginary unconstrained ideal. Look for substantially simpler ways to achieve the intent, including doing less or leaving the system alone. Explain what an alternative gains and gives up; a different design is not automatically a better one.
 
 These are questions to reason with, not a checklist to exhaust or mandatory sections to fill.
 
@@ -40,7 +42,7 @@ Use these distinctions to clarify the discussion, not to manufacture four lists.
 
 Present a critical walkthrough, organized around the work's meaningful goals, decisions, and behavior—not discovery order, file order, or a disconnected priority-ranked issue inventory. Give the overall judgment early and surface urgent blockers immediately; narrative order must not hide them.
 
-Take the reader from intent to implementation to consequences. Show relevant entry points and connections, explain the mental model, and place tradeoffs, design concerns, and concrete mistakes beside the paths or decisions they concern. Make clear what the reader needs to understand, decide, or have fixed, and why. Avoid repeating the same finding in a walkthrough and a separate bug list.
+Take the reader from intent to implementation to consequences. Show relevant entry points and connections, explain the mental model, and place tradeoffs, design concerns, questions of form, and concrete mistakes beside the paths or decisions they concern. Make clear what the reader needs to understand, decide, or have fixed, and why. Avoid repeating the same finding in a walkthrough and a separate bug list. Do not add a separate style section; raise a form finding where it matters, and only if it costs the reader something.
 
 Optimize signal by validating, contextualizing, and deduplicating findings—not by omitting confirmed actionable defects that do not fit the main story. Briefly group such defects where they are easiest to understand. An accepted tradeoff does not excuse an implementation that fails the chosen contract.
 
