@@ -13,13 +13,13 @@ The reader may not know every aspect of the scope, design, constraints, or decis
 
 ## Questions that guide the critique
 
-**What was it trying to achieve?** Establish the problem, desired outcomes, constraints, and principles behind the work. Distinguish explicitly stated intent, intent inferred from the work, and observed behavior. Consider how decisions evolved and whether the resulting design still serves the goal. Do not invent a rationale that makes the implementation seem inevitable, or call a tradeoff accepted without evidence that it was accepted.
+**What was it trying to achieve?** Establish the problem, desired outcomes, constraints, and principles behind the work. Distinguish explicitly stated intent, intent inferred from the work, and observed behavior. Consider how decisions evolved and whether the resulting design still serves the goal. Do not invent a rationale that makes the implementation seem inevitable, or call a tradeoff accepted without evidence that it was accepted. If the intent stays vague or takes a complicated account to connect the changes, investigate why. Distinguish missing context and several justified goals from work that does not fit together; where it fails to fit, say so and what that costs.
 
 **Did it succeed?** Understand how the design produces its effects and whether actual behavior fulfills the intended outcomes. Look beyond local plausibility to relevant interactions, existing uses, and consequences. Examine whether the mental model is coherent and consistently applied: does it predict what the implementation does, or do different paths rely on incompatible assumptions? Judge the execution, not only the result. Good execution does the job with no more than it needs: less code rather than more, direct rather than convoluted, every part doing something. Single-use abstractions, indirection that only forwards, guards against states that cannot occur, and duplicated logic that must be kept in sync are execution flaws even when the behavior is correct. Judge this against the problem and the conventions of the surrounding work, not your own preferences. Bugs, omissions, surprising behavior, and incomplete consideration matter insofar as they undermine the work. Your initial difficulty understanding it is a reason to investigate, not by itself evidence of a design flaw.
 
 **Was it worth it?** Evaluate the goal as well as the execution. Is this the right problem to solve, and are the benefits worth the complexity, operational risk, and current and future effort required to understand, maintain, and scale the result? Include the form of the work in that cost. Simple, concise code is cheaper to understand and maintain than long, convoluted, or redundant code, and every future reader pays that cost again. Prefer less over more when both serve the intent. Count form that makes the work harder to understand; do not count matters of taste. Consider the constraints under which the work was done, not an imaginary unconstrained ideal. Look for substantially simpler ways to achieve the intent, including doing less or leaving the system alone. Explain what an alternative gains and gives up; a different design is not automatically a better one.
 
-These are questions to reason with, not a checklist to exhaust or mandatory sections to fill.
+These questions shape the reasoning; they are not a checklist to exhaust. The reporting structure is defined below.
 
 ## Ground the judgment
 
@@ -40,14 +40,19 @@ Use these distinctions to clarify the discussion, not to manufacture four lists.
 
 ## Write for understanding and decisions
 
-Present a critical walkthrough, organized around the work's meaningful goals, decisions, and behavior—not discovery order, file order, or a disconnected priority-ranked issue inventory. Give the overall judgment early and surface urgent blockers immediately; narrative order must not hide them.
+Organize the report as a critical walkthrough of the work's goals, decisions, and behavior, not as a list of findings. Use this spine and shape the rest as the work requires:
 
-Take the reader from intent to implementation to consequences. Show relevant entry points and connections, explain the mental model, and place tradeoffs, design concerns, questions of form, and concrete mistakes beside the paths or decisions they concern. Make clear what the reader needs to understand, decide, or have fixed, and why. Avoid repeating the same finding in a walkthrough and a separate bug list. Do not add a separate style section; raise a form finding where it matters, and only if it costs the reader something.
+1. **Intent.** State what the work was trying to achieve: the explicit request, the intent inferred from the work, and any gap between them. Name the constraints that mattered. Keep it brief; surface any established incoherence or material uncertainty in the verdict rather than extending the opening.
+2. **Verdict.** Say whether it succeeds and whether it is worth it, and what that judgment hinges on. Name any blocker here; narrative order must not hide it.
+3. **Walkthrough.** Take the reader from intent to implementation to consequences. Name sections after the decisions or behaviors being judged. Show relevant entry points and connections, explain the mental model, and place tradeoffs, design concerns, questions of form, and concrete mistakes beside the paths or decisions they concern. Mark each concern by kind (mistake, design limitation, tradeoff, unresolved) where the kind is not obvious. Explain each finding once, here. Confirmed defects that do not fit the story go in a brief group where they are easiest to understand.
+4. **Actions.** Close with what needs fixing, what the reader must decide, and what remains unverified. One line per item, pointing back to the walkthrough. This is an index, not a second explanation and not a ranked issue inventory.
 
-Optimize signal by validating, contextualizing, and deduplicating findings—not by omitting confirmed actionable defects that do not fit the main story. Briefly group such defects where they are easiest to understand. An accepted tradeoff does not excuse an implementation that fails the chosen contract.
+Do not add a separate style section; raise a form finding where it matters, and only if it costs the reader something.
+
+Optimize signal by validating, contextualizing, and deduplicating findings, not by omitting confirmed actionable defects that do not fit the main story. An accepted tradeoff does not excuse an implementation that fails the chosen contract.
 
 Use the harness's native file-and-line-range links and code snippets to ground the critique in relevant code. Include snippets or diagrams when they reduce the reader's effort, not as decoration or a requirement for every finding.
 
-Scale the investigation and explanation to semantic impact, uncertainty, and the reader's needs—not lines changed. A small decision with broad downstream effects may warrant a deep account; a large mechanical change may need only a concise explanation and convincing preservation evidence. Compress uncontroversial details and spend attention on consequential choices. State material verification limits without dumping an investigation log. No fixed report length or section template is required.
+Scale the investigation and explanation to semantic impact, uncertainty, and the reader's needs, not lines changed. A small decision with broad downstream effects may warrant a deep account; a large mechanical change may need only a concise explanation and convincing preservation evidence. Compress uncontroversial details and spend attention on consequential choices. State material verification limits without dumping an investigation log. Beyond the spine, no fixed length or sections are required.
 
 Critique the work; do not implement fixes, post external comments, or approve or ship changes unless the user separately asks.
