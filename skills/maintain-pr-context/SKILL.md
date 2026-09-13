@@ -1,6 +1,6 @@
 ---
 name: maintain-pr-context
-description: Maintain a populated branch-specific PR.md as the living source of truth for pull-request work, covering scope, prior considerations, product and technical decisions, implementation state, deferrals, and QA. Use when either (1) beginning PR-bound work on a fresh branch and the request or available context mentions or links a Linear issue—both conditions are required for initial implicit activation—or (2) the current managed PR.md contains active PR working context. Also use when explicitly asked to initialize, refresh, or turn PR.md into a PR description. Treat an empty managed file or inactive default-branch/detached notice as no active context.
+description: Maintain branch-specific PR.md context. Use when managed PR.md contains active working context; when beginning PR-bound work on a fresh branch with a Linear issue in the request or context; or when explicitly asked to initialize, refresh, or derive a PR description from PR.md. Empty files and inactive notices do not activate it.
 ---
 
 # Maintain PR Context

@@ -1,6 +1,6 @@
 ---
 name: setup-pr-context
-description: Install, inspect, or repair shared branch-aware PR.md handling for repositories whose branches may be checked out across multiple clones. Use when asked to set up PR context, when maintain-pr-context delegates because its managed PR.md symlink or checkout synchronization is absent or incorrect, or when existing Git hooks must be integrated without replacing repository-managed hooks.
+description: Install, inspect, or repair shared branch-aware PR.md handling for repositories whose branches may be checked out across multiple clones. Use when asked to set up PR context, when maintain-pr-context delegates because its managed PR.md symlink or checkout synchronization is absent or incorrect, or when PR-context checkout hooks need integration with existing repository hooks.
 ---
 
 # Set Up PR Context

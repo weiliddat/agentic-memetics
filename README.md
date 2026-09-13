@@ -3,7 +3,7 @@
 Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
 
 - scripts/
-  - link-skills.sh: link ./skills/ to where coding agents look for skills, e.g. ~/.agents/skills/
+  - link-skills.sh: legacy whole-directory linking script; prefer a real ~/.agents/skills/ directory with symlinks to individual selected skills
 - skills/
   - code-reference-formatting: format code references and previews in a portable way
   - code-diff-canvas: render code chunks and diffs as a self-contained HTML page (Pierre Diffs + Shiki, SSR)

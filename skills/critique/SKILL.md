@@ -1,6 +1,6 @@
 ---
 name: critique
-description: "Evaluates work—code or otherwise—through its intent, effectiveness, execution, and the value of its design and tradeoffs, presenting a critical walkthrough that helps the reader understand and judge it. Use only when the user explicitly asks for critique by name. Do not invoke for generic review requests, deep reviews, walkthroughs, or as an automatic follow-up to implementation."
+description: Evaluate work, code or otherwise, against its intent, effectiveness, execution, and design tradeoffs, explaining the judgment through a critical walkthrough. Use only when the user explicitly requests critique by name.
 ---
 
 # Critique
