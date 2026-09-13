@@ -17,6 +17,7 @@ For evaluation-only requests, read `PR.md` as context and keep findings in the r
 - If a tool refuses the symlink, resolve it and operate on the target. Never replace it with a regular file to work around a tool limitation, or overwrite an unmanaged file, symlink, or another branch's context.
 - When setup is absent, broken, or points at the wrong branch, consult [`../setup-pr-context/SKILL.md`](../setup-pr-context/SKILL.md). Follow its repair workflow when authorized; otherwise report the problem and use only context whose ownership is established.
 - Treat `PR.md` as existing working context when it contains substantive branch-specific information. An empty file, unfilled template, or default-branch/detached-HEAD notice is not working context; its existence alone does not activate this skill or expand scope. Do not initialize context on the default branch or detached HEAD without explicit instruction.
+- An unfilled template contains only headings, instructions, and placeholders, without actual branch-specific goals, decisions, implementation notes, or findings. Remaining placeholders do not invalidate otherwise useful context.
 - For existing working context, read branch metadata and all of `Current state` before planning or changing code. Consult relevant `History` and linked `Appendix` entries when they explain a decision, support evidence needed for the task, or resolve a material uncertainty. Do not load the entire appendix by default.
 
 ## Start or resume

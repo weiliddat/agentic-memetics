@@ -75,6 +75,7 @@ if [ -n "$existing" ]; then
 	if [ "$dead" = "0" ]; then
 		echo "ALREADY RUNNING  $SESSION:$WINDOW  ($pane)"
 		echo "command: $cmd"
+		t list-panes -t "$SESSION:=$WINDOW" -F 'directory: #{pane_current_path}'
 		echo
 		echo "Nothing was started. Reuse this process if its project/worktree, command,"
 		echo "configuration, and readiness match the task; a matching name is not enough."

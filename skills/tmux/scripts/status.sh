@@ -54,9 +54,8 @@ tmux -S "$SOCKET" list-sessions \
 
 echo
 printf '  %-30s %-5s %-6s %-5s %s\n' TARGET DEAD EXIT PANE COMMAND
-# pane_start_command, not pane_current_command: tmux runs the command through
-# the shell, which does not exec-optimize, so pane_current_command reads "zsh"
-# for every window. Fall back to the current command for the plain shell window.
+# Prefer pane_start_command: pane_current_command may identify a wrapper shell.
+# Fall back to the current command for the plain shell window.
 tmux -S "$SOCKET" list-panes -a -F \
 	'#{session_name}:#{window_name}|#{pane_dead}|#{pane_dead_status}|#{pane_dead_signal}|#{pane_id}|#{?pane_start_command,#{pane_start_command},#{pane_current_command}}' |
 	while IFS='|' read -r target dead status signal pane cmd; do
@@ -72,6 +71,7 @@ tmux -S "$SOCKET" list-panes -a -F \
 		fi
 		printf '  %-30s %-5s %-6s %-5s %s\n' \
 			"$target" "$dead" "$exitcol" "$pane" "${cmd:--}"
+		tmux -S "$SOCKET" list-panes -t "$pane" -F '    directory: #{pane_current_path}'
 	done
 
 echo

@@ -9,7 +9,9 @@ Help the reader understand how the requested code works, why it is structured th
 
 ## Scope and structure
 
-Read the code needed to explain the requested behavior. Follow related types, callers, configuration, tests, or linked design context when they affect the explanation. Distinguish observed behavior from inferred intent and unresolved questions.
+Read the code needed to explain the requested behavior. Follow related types, callers, configuration, tests, or linked design context when they affect the explanation. Distinguish observed behavior from inferred intent and unresolved questions. For PR-scoped walkthroughs, use the relevant diff and comparison baseline.
+
+Mention suspected defects or incomplete behavior you notice, distinguishing confirmed behavior from concerns that need verification. Do not turn the walkthrough into a review.
 
 Start with a useful mental model, then group the explanation by coherent concepts or steps. Choose the order that makes the code easiest to understand:
 

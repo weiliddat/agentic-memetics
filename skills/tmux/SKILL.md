@@ -45,7 +45,7 @@ Then, before starting anything:
 "$SKILL_DIR"/scripts/status.sh
 ```
 
-One call, whole picture: whether the socket exists, whether a server is behind it, every session, every window with its command, dead flag, and exit code. A **stale** socket (file present, no server) is normal after a reboot — `start.sh` handles it; never delete it by hand.
+One call, whole picture: whether the socket exists, whether a server is behind it, every session, every window with its command, current directory when available, dead flag, and exit code. A **stale** socket (file present, no server) is normal after a reboot — `start.sh` handles it; never delete it by hand.
 
 Never start a process without checking whether it is already running.
 
@@ -95,9 +95,11 @@ tmux -S ~/.tmux/sockets/agent.sock capture-pane -pJ -S -200 -t '<session>:=<wind
 
 `-p` to stdout, `-J` joins wrapped lines, `-S -200` is the last 200 lines (`-S -` for everything). The `=` makes the target an exact match — without it tmux prefix-matches and `dev` happily hits `dev-server`.
 
-Reading never requires attaching, and works the same for dead windows.
+Reading never requires attaching, and works the same for dead windows. Raw captures can include trailing blank rows from the pane grid; the scripts trim these.
 
-For manual state queries or unexpected capture output, read [references/troubleshooting.md](references/troubleshooting.md). Prefer the scripts for routine state inspection.
+Use `list-panes` for state checks rather than `display-message`, which can report the current pane when a requested target is missing. Prefer the provided scripts for routine state inspection.
+
+For details on manual state queries or unexpected capture output, read [references/troubleshooting.md](references/troubleshooting.md).
 
 Window geometry is pinned at 200x50 (`window-size manual`) precisely so captures do not reflow when a human attaches with a differently-sized terminal. Do not resize windows.
 

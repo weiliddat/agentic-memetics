@@ -2,8 +2,6 @@
 
 Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
 
-- scripts/
-  - link-skills.sh: legacy whole-directory linking script; prefer a real ~/.agents/skills/ directory with symlinks to individual selected skills
 - skills/
   - code-reference-formatting: format code references and previews in a portable way
   - code-diff-canvas: render code chunks and diffs as a self-contained HTML page (Pierre Diffs + Shiki, SSR)
@@ -18,5 +16,18 @@ Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
   - thermos: delegate both thermo-nuclear reviews and synthesize their findings
   - deep-thermos: run deep-code-review plus both thermo-nuclear passes in one wave and synthesize a single report
   - tmux: run, watch, and interrupt long-lived processes on an isolated tmux server a human can also attach to
+
+## Using selected skills
+
+Link individual skill directories into the location that makes sense for your harness and scope. Use `~/.agents/skills/` as the global default, or a project-local or harness-specific skills directory when appropriate. Keep the destination as a real directory with one symlink per selected skill, rather than linking this repository's entire `skills/` directory.
+
+For example, from this repository's root:
+
+```sh
+mkdir -p "$HOME/.agents/skills"
+ln -s "$(pwd)/skills/critique" "$HOME/.agents/skills/"
+```
+
+Repeat for the skills you want. Include any sibling skills they depend on; for example, `maintain-pr-context` uses `setup-pr-context` for setup and repair.
 
 See [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md) for third-party work adapted by this repository.
