@@ -1,5 +1,3 @@
-<!-- pr-context: active -->
-
 # PR Working Context
 
 - Linear issue: <identifier, title, and link when available>

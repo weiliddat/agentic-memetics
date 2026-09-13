@@ -17,7 +17,7 @@ Three things to hold in your head:
 
 1. **One server**, on a hardcoded socket: `~/.tmux/sockets/agent.sock`. Private to agents. The user's own tmux and their `~/.tmux.conf` are untouched and invisible to it.
 2. **One session per project**, named after the project. **One window per process**, named after the process. Never panes — pane indices renumber when siblings close, and split panes are too narrow for readable output.
-3. **The process *is* the window's command.** There is no shell in the way. That buys a state machine with exactly three states:
+3. **The process is launched as the window's startup command.** tmux runs the command string through a shell. Use the scripts to distinguish these states:
 
 | state | meaning | how you leave it |
 |---|---|---|
@@ -83,11 +83,9 @@ It gives up early if the process dies, so a crash never costs you the full timeo
 
 ### When something is already running
 
-`start.sh` exits `2` and starts nothing. **Do not quietly start a second copy, and do not quietly kill the first.** If it looks like a port or resource clash, ask the user which they meant:
+`start.sh` exits `2` and leaves the live window untouched. Check the running process's project/worktree, command, configuration, and readiness. If it matches the intended task and is suitable to reuse, continue with it without asking again; a matching name alone is not enough.
 
-> `api` is already running in session `myrepo` (port 3000). Do you want to reuse the running one, or should I configure this instance on a different port?
-
-Then do what they say.
+Do not start a duplicate or stop a process to make room without authorization. Carry forward an already-authorized restart or replacement. If a conflict leaves a consequential choice unresolved, explain it and ask before changing the running process or its configuration.
 
 ## Reading
 
@@ -99,11 +97,7 @@ tmux -S ~/.tmux/sockets/agent.sock capture-pane -pJ -S -200 -t '<session>:=<wind
 
 Reading never requires attaching, and works the same for dead windows.
 
-Two traps if you write tmux commands by hand instead of using the scripts:
-
-- **Query state with `list-panes`, never `display-message`.** Given a target that does not exist, `display-message -p` exits **0** and returns the *current* pane's values — so a missing window looks like a healthy running one. `list-panes -t 'sess:=win'` exits 1 with no output, which is what you want.
-- **`pane_current_command` reads `zsh` for everything**, because tmux runs the command through the shell and the shell does not exec-optimize it. Use `#{pane_start_command}` to find out what a window is actually running.
-- `capture-pane` returns the whole 50-row pane grid, so short output arrives padded with blank lines. The scripts trim it; if you capture by hand, expect the padding.
+For manual state queries or unexpected capture output, read [references/troubleshooting.md](references/troubleshooting.md). Prefer the scripts for routine state inspection.
 
 Window geometry is pinned at 200x50 (`window-size manual`) precisely so captures do not reflow when a human attaches with a differently-sized terminal. Do not resize windows.
 
@@ -131,20 +125,9 @@ tmux -S ~/.tmux/sockets/agent.sock attach -t <session>
 
 Attaching must be done from a plain terminal. Nested tmux is not supported — if the user is already inside tmux, they need another terminal or window.
 
-## REPLs and debuggers
+## Interactive processes
 
-These are the case where a window is genuinely interactive: start it, then drive it with `send-keys`.
-
-```bash
-tmux -S ~/.tmux/sockets/agent.sock send-keys -t '<session>:=<window>' -l 'print(x)'
-tmux -S ~/.tmux/sockets/agent.sock send-keys -t '<session>:=<window>' Enter
-```
-
-`-l` sends the text literally; send `Enter` separately so nothing in the payload is interpreted as a key name.
-
-- **Python**: `PYTHON_BASIC_REPL=1` is already set server-wide in `agent.tmux.conf`. The new REPL's cursor and bracketed-paste escapes corrupt `capture-pane` output; the basic one is plain text.
-- **Debugging on macOS**: use `lldb`, not `gdb`. gdb needs code-signing that is usually absent, and fails in ways that look like your command was wrong.
-- After every `send-keys`, capture and read before sending more. These are stateful; do not fire a sequence blind.
+For a REPL or debugger, read [references/interactive.md](references/interactive.md) before sending input. It covers literal input, inspecting each response, and Python/macOS specifics.
 
 ## Files
 
@@ -161,5 +144,5 @@ tmux -S ~/.tmux/sockets/agent.sock send-keys -t '<session>:=<window>' Enter
 - Run tmux without `-S ~/.tmux/sockets/agent.sock`. Bare `tmux` targets the user's server; `kill-server` there destroys their work.
 - Use `kill-server` at all. Nothing in this skill needs it.
 - Split panes.
-- Start a duplicate of a running process, or kill one to make room, without asking.
+- Start a duplicate of a running process, or stop one to make room, without authorization.
 - Source the user's `~/.tmux.conf`. Their `history-limit`, plugins, and mouse settings would corrupt captures.

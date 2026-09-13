@@ -76,8 +76,10 @@ if [ -n "$existing" ]; then
 		echo "ALREADY RUNNING  $SESSION:$WINDOW  ($pane)"
 		echo "command: $cmd"
 		echo
-		echo "Nothing was started. Do NOT start a second copy silently - if this is"
-		echo "a port/resource clash, ask the user which they want."
+		echo "Nothing was started. Reuse this process if its project/worktree, command,"
+		echo "configuration, and readiness match the task; a matching name is not enough."
+		echo "Do not duplicate or replace it without authorization. Carry forward any"
+		echo "authorized restart; ask if a conflict leaves a consequential choice unresolved."
 		echo
 		tail_output 15
 		exit 2

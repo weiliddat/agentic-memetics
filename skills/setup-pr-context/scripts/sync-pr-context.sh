@@ -43,7 +43,6 @@ if [ -n "$branch_ref" ]; then
   default_branch=$(git config --get prContext.defaultBranch 2>/dev/null || :)
   if [ -n "$default_branch" ] && [ "$branch" = "$default_branch" ] && [ ! -s "$target" ]; then
     {
-      printf '%s\n' '<!-- pr-context: inactive -->'
       printf '%s\n\n' '# PR Context Notice'
       printf '%s\n\n' "You are on the default branch (\`$branch\`), not a pull-request branch."
       printf '%s\n' 'Are you sure you want to record pull-request working context here?'
@@ -54,7 +53,6 @@ else
   mkdir -p "$(dirname "$target")"
   if [ ! -s "$target" ]; then
     {
-      printf '%s\n' '<!-- pr-context: inactive -->'
       printf '%s\n\n' '# PR Context Notice'
       printf '%s\n\n' 'HEAD is detached, so this checkout is not on a branch.'
       printf '%s\n' 'Switch to a pull-request branch before recording working context.'
