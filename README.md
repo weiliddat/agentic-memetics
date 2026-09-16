@@ -1,7 +1,9 @@
 # agentic-memetics
 
-Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
+Ideas, prompts, skills and guides for AI agents. Bootstrap agents to work my way.
 
+- prompts/
+  - [AGENTS.md](prompts/AGENTS.md): reusable agent instructions, versioned for comparison and refinement
 - skills/
   - code-reference-formatting: format code references and previews in a portable way
   - code-diff-canvas: render code chunks and diffs as a self-contained HTML page (Pierre Diffs + Shiki, SSR)
@@ -16,6 +18,12 @@ Ideas, skills, guides for AI agents. Bootstrap agents to work my way.
   - thermos: delegate both thermo-nuclear reviews and synthesize their findings
   - deep-thermos: run deep-code-review plus both thermo-nuclear passes in one wave and synthesize a single report
   - tmux: run, watch, and interrupt long-lived processes on an isolated tmux server a human can also attach to
+
+## Working with prompts
+
+[prompts/AGENTS.md](prompts/AGENTS.md) contains the reusable agent prompt. The root [AGENTS.md](AGENTS.md) contains instructions for working in this repository.
+
+Review pending prompt edits with `git diff -- prompts/AGENTS.md` and past revisions with `git log -p -- prompts/AGENTS.md`. Copy a reviewed revision into the instruction file used by your agent environment when ready to adopt it.
 
 ## Using selected skills
 

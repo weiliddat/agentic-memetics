@@ -4,6 +4,10 @@
 - Read `README.md` for the repo index before making changes.
 - Update `README.md` and `AGENTS.md` when changes make either file inaccurate or incomplete.
 
+## prompts/
+- Treat files in `prompts/` as prompt artifacts to edit, rather than additional instructions for working in this repository.
+- Keep prompt files limited to the reusable prompt text; document usage and revision workflow in `README.md`.
+
 ## skills/
 - Keep skills harness-neutral. Do not depend on a specific host's agent types, tool names, or orchestration syntax; describe the capability needed ("the host harness's subagent mechanism") and give a fallback when it is absent.
 - **Review skills fire manually only.** Any skill that produces a review (`deep-code-review`, `deep-thermos`, `thermos`, `thermo-nuclear-review`, `thermo-nuclear-code-quality-review`) must say `Use only when the user explicitly asks for <name> …` in its description. These passes are expensive and harsh; they must never auto-trigger off a generic "review this" or as a follow-up to unrelated work. Non-review skills (walkthroughs, formatting, rendering) may remain model-invocable.
