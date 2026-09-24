@@ -5,18 +5,10 @@ Ideas, prompts, skills and guides for AI agents. Bootstrap agents to work my way
 - prompts/
   - [AGENTS.md](prompts/AGENTS.md): reusable agent instructions, versioned for comparison and refinement
 - skills/
-  - code-reference-formatting: format code references and previews in a portable way
-  - code-diff-canvas: render code chunks and diffs as a self-contained HTML page (Pierre Diffs + Shiki, SSR)
-  - deep-code-review: perform a deep structured code review
   - critique: critically walk through the intent, effectiveness, execution, and tradeoffs of any piece of work, software first
-  - pr-walkthrough: walk through a PR in a semantic, structured way
   - setup-pr-context: install shared branch-aware PR.md storage and additive checkout synchronization
   - maintain-pr-context: maintain the current branch's shared PR.md as the source of truth for Linear-linked work
   - code-walkthrough: walk through and explain a feature
-  - thermo-nuclear-review: audit a change set for correctness, security, breakage, and feature-gate leaks
-  - thermo-nuclear-code-quality-review: apply a strict maintainability and structural-simplification rubric
-  - thermos: delegate both thermo-nuclear reviews and synthesize their findings
-  - deep-thermos: run deep-code-review plus both thermo-nuclear passes in one wave and synthesize a single report
   - tmux: run, watch, and interrupt long-lived processes on an isolated tmux server a human can also attach to
 
 ## Working with prompts
