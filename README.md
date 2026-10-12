@@ -4,6 +4,7 @@ Ideas, prompts, skills and guides for AI agents. Bootstrap agents to work my way
 
 - prompts/
   - [AGENTS.md](prompts/AGENTS.md): reusable agent instructions, versioned for comparison and refinement
+  - [PUCK.md](prompts/PUCK.md): personal instructions for Amp's Puck meta agent, loaded in every Puck conversation
 - skills/
   - critique: critically walk through the intent, effectiveness, execution, and tradeoffs of any piece of work, software first
   - setup-pr-context: install shared branch-aware PR.md storage and additive checkout synchronization
@@ -13,9 +14,9 @@ Ideas, prompts, skills and guides for AI agents. Bootstrap agents to work my way
 
 ## Working with prompts
 
-[prompts/AGENTS.md](prompts/AGENTS.md) contains the reusable agent prompt. The root [AGENTS.md](AGENTS.md) contains instructions for working in this repository.
+[prompts/AGENTS.md](prompts/AGENTS.md) contains the reusable agent prompt. [prompts/PUCK.md](prompts/PUCK.md) contains my personal instructions for Amp's Puck meta agent. The root [AGENTS.md](AGENTS.md) contains instructions for working in this repository.
 
-Review pending prompt edits with `git diff -- prompts/AGENTS.md` and past revisions with `git log -p -- prompts/AGENTS.md`. Copy a reviewed revision into the instruction file used by your agent environment when ready to adopt it.
+Review pending prompt edits with `git diff -- prompts/AGENTS.md prompts/PUCK.md` and past revisions with `git log -p -- prompts/AGENTS.md` (or `prompts/PUCK.md`). Copy a reviewed revision into the instruction file used by your agent environment (for Puck, its personal instructions setting) when ready to adopt it.
 
 ## Using selected skills
 
