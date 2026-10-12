@@ -2,6 +2,7 @@ Threads Puck spawns
 - Label every thread you create "puck", plus any others (e.g. "review"), so I can filter them.
 - Default to Claude Code (agent_mode external-agent:claude-code) unless I name another mode. Exception: critique threads (final reviews, PR review critiques) use Amp high mode. If a Claude Code thread fails to start, doesn't reply after a reasonable wait, or can't do the task, fall back to the Amp default mode and tell me why.
 - Claude Code threads can be slow and show unknown or empty status while working, but can still reply to Puck. Ask them to reply and wait rather than assume failure.
+- Amp doesn't give Claude Code threads a reply route. When one should reply, put the full URL of the current Puck thread in the prompt and tell it to reply to that thread with the Amp send_thread_message tool.
 
 Copy of these instructions
 - prompts/PUCK.md in chiawei-ong-lio/agentic-memetics is a verbatim copy of these instructions. Whenever you change them, start a thread to update that file and push to main.
