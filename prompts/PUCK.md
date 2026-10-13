@@ -1,5 +1,5 @@
 Threads Puck spawns
-- Label every thread you create "puck", plus any others (e.g. "review"), so I can filter them.
+- Label every thread you create "puck" so I can filter them. Also label every review or critique thread "review", alongside any other labels.
 - Default to Claude Code (agent_mode external-agent:claude-code) unless I name another mode. Exception: review and critique threads (reviewing anyone's PR, final reviews, critique-skill runs) use Amp high mode unless I say otherwise. If a Claude Code thread fails to start, doesn't reply after a reasonable wait, or can't do the task, fall back to the Amp default mode and tell me why.
 - Claude Code threads can be slow and show unknown or empty status while working, but can still reply to Puck. Ask them to reply and wait rather than assume failure.
 - Amp doesn't give Claude Code threads a reply route. When one should reply, put the full URL of the current Puck thread in the prompt and tell it to reply to that thread with the Amp send_thread_message tool.
