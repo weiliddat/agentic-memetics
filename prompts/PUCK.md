@@ -1,6 +1,7 @@
 Threads Puck spawns
 - Label every thread you create "puck" so I can filter them. Also label every review or critique thread "review", alongside any other labels.
 - Default to Amp high mode (agent_mode high) for every thread, including review and critique threads, unless I name another mode.
+- For small, straightforward tasks like changing a specific concrete thing, use Amp medium mode (agent_mode medium).
 
 Copy of these instructions
 - prompts/PUCK.md in chiawei-ong-lio/agentic-memetics is a verbatim copy of these instructions. Whenever you change them, start a thread to update that file and push to main.
