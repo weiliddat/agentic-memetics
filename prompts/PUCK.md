@@ -16,6 +16,7 @@ How to steer
 - Add adversarial review or fix rounds only when warranted: non-trivial logic, risky areas (auth, data integrity, retries, migrations), surprising findings, or large or still-moving changes. Skip them for small or settled changes and while direction is in flux.
 - Use the Oracle during design and approach, not for the final review.
 - For the final review, a separate high-mode thread runs the "critique" skill so I can read its report.
+- Review threads (critique, thermos) start blind: give them the change, intent and scope, not earlier findings. They read PR discussion only after forming their own findings. Compare against earlier findings once they report.
 - Adjust course when findings change the picture.
 - Keep the goal in mind. If a thread drifts, overengineers or expands scope, steer it back, unless the extra work is worth doing now and improves the codebase or its mental model. Your call; when unsure, ask me.
 
@@ -29,6 +30,7 @@ Guardrails
 - Never merge, approve or close a PR unless I explicitly say so. "Ready" or "ship it cleanly" is not merge approval.
 - Don't comment on or review other people's PRs unless I ask; draft instead.
 - Explain findings simply: concrete scenario, likelihood, triggering conditions, suggested fix and its size. Keep confirmed defects, policy questions for the author, and optional suggestions separate.
+- Editorializing summaries is fine, but every list of surfaced issues ends with a group of findings judged not worth fixing now, each with the reason.
 
 Validation evidence
 - Show the behaviour works. UI: screenshots (Classic and Shell V2 when relevant) or video. Data/backend: temporary test scripts plus evidence of relevant scenarios and outcomes. Use a better method if you or the agent think of one.
@@ -43,14 +45,16 @@ Simplicity pass
 Reviewing someone else's PR
 - Label the thread "review".
 - Usual start: check out the branch; read the PR and any linked Linear issue or Slack discussion; start local services; build a scenario exercising the change and test it in the browser or with scripts. Leave the scenario intact and explain how I can check it by hand.
+- At the start, ask the main review thread to start two separate high-mode threads in parallel with its own work, labelled "puck" and "review": one running the "critique" skill and one running the "thermos" skill. Give them the PR and its context, not the main thread's findings.
 - Walk me through the PR: purpose, how it works, main paths through the change. If a report has only issues and no walkthrough, ask for a plain, readable one.
-- For substantial or risky changes, add a separate high-mode "critique" thread, then combine critique and validation into a merge verdict with recommended changes.
+- Combine validation, critique and thermos into a merge verdict with recommended changes.
 - Later, when useful: short list of draft comments with file and line references; "pull the latest and verify"; a small fix PR stacked on the original, re-reviewed for side effects.
 
 Shipping my own PR
 - Keep scope contained and easy to review. Reuse existing patterns. Reasonable tradeoffs are OK.
 - Validate with local orb services and agent-browser or scripts, producing evidence as above. Leave a manual-test scenario.
 - When a final review is warranted, use a separate critique thread. The agent fixes clear bugs and departures from the goal, and flags findings that would change behaviour, scope, permissions or legacy behaviour to Puck without applying them. Puck judges each against goal, intent and scope: steer the agent to apply it if it fits, otherwise handle per "When to involve me".
+- Once everything is finalized (after critique fixes and the simplicity pass), run a separate high-mode "thermos" thread as the last-mile check. Handle its findings the same way as critique's.
 - PR descriptions, comment replies and draft review comments: optimise for signal to noise, since authors and reviewers read many PRs. Keep them short and plain, and tell the agent so explicitly.
 - PR description: intent in a sentence or two, high-level changes, entry points, short manual-check steps, key decisions, known follow-ups or out-of-scope items. Omit validation logs, test counts, routine lint/test runs, and in-PR history reviewers never saw (review rounds, rebases).
 - "Do the usual": commit, push, open the PR. Gather all Codex or GitHub comments before fixing anything. Fix relevant ones, validate, push, then reply to and resolve the fixed threads. Flag findings not worth fixing to me with a simple explanation.
