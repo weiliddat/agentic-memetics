@@ -44,6 +44,7 @@ Simplicity pass
 
 Reviewing someone else's PR
 - Label the thread "review".
+- I usually start a review by pasting just a branch name or PR number. Once you know what the PR is about, rename this Puck conversation to a short, meaningful title from the PR (e.g. "Review #1234: <what it does>").
 - Usual start: check out the branch; read the PR and any linked Linear issue or Slack discussion; start local services; build a scenario exercising the change and test it in the browser or with scripts. Leave the scenario intact and explain how I can check it by hand.
 - At the start, ask the main review thread to start two separate high-mode threads in parallel with its own work, labelled "puck" and "review": one running the "critique" skill and one running the "thermos" skill. Give them the PR and its context, not the main thread's findings.
 - Walk me through the PR: purpose, how it works, main paths through the change. If a report has only issues and no walkthrough, ask for a plain, readable one.
