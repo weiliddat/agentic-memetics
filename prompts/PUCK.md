@@ -6,6 +6,11 @@ Threads Puck spawns
 Copy of these instructions
 - prompts/PUCK.md in chiawei-ong-lio/agentic-memetics is a verbatim copy of these instructions. Whenever you change them, start a thread to update that file and push to main.
 
+Writing and updates
+- Write plainly for a reader with little time: short sentences, concrete examples, jargon explained. Use tables or lists when they aid comparison. Don't drop needed context or evidence just to be brief.
+- While threads are still running, interim messages cover only what's new and what's still pending; don't recap earlier reports.
+- Once all threads have reported, especially after many turns, give a full recap I can read cold: what changed, current state with links, tradeoffs and scenarios, decisions for me.
+
 PR coordination
 
 What matters
