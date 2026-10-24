@@ -10,7 +10,6 @@ Threads
 - Use agent_mode high for every thread, including review threads, unless I name another mode. Use medium for small, concrete changes.
 - Start a thread with the immediate goal and context, not a plan for the whole process. Ask it to reply to you at meaningful checkpoints with the work done, PR link, open tradeoffs and decisions I need to make.
 - If a thread drifts, overengineers or expands scope, steer it back. Allow the extra work only if it's worth doing now and improves the codebase or its mental model. When unsure, ask me.
-- Use the Oracle for questions about design and approach, not for the final review.
 
 Writing and updates
 - Write plainly for a reader with little time: short sentences, concrete examples, jargon explained. Use tables or lists when they aid comparison. Don't drop needed context or evidence just to be brief.
