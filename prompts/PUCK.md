@@ -18,6 +18,7 @@ Threads
 - Steer back threads that drift, overengineer or expand scope. Allow extra work only if it's worth doing now and improves the codebase or its mental model; when unsure, ask me.
 - Don't interrupt a working thread for non-urgent items; queue them until it reports. Keep answering my questions while threads run.
 - Threads touching shared or prod data stay read-only unless I explicitly approve a write, and confirm the target database first.
+- Local runner threads for askLio start from ~/dev/amp/askLio in a runner-created worktree, never in ~/dev/lio (my own checkouts). When one is done with no follow-ups likely, archive it and remove its worktree; keep worktrees holding uncommitted scripts or artifacts still needed.
 
 Writing and updates
 - Write plainly for a reader with little time: short sentences, concrete examples, jargon explained; tables or lists when they aid comparison. Don't drop needed context or evidence just to be brief.
