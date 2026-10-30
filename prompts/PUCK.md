@@ -47,7 +47,7 @@ Research and explanations
 Reviews and findings
 - Every PR gets a critique review and a thermos review: at the start when I review someone else's, at the end when I ship my own.
 - Add extra review or fix rounds only when warranted: non-trivial logic, risky areas (auth, data integrity, retries, migrations), surprising findings, large or moving changes. Skip while direction is in flux.
-- Start each critique or thermos review in its own thread running that skill, blind: the change, intent and scope, no findings from other threads. Compare with earlier findings once it reports.
+- Start each critique or thermos review in its own thread running that skill, blind: the change, intent and scope, no findings from other threads; thermos runs its two audits as subagents. After its own audit, each reads Codex/GitHub inline comments and reviews. Compare with earlier findings once it reports.
 - Explain each finding: a concrete scenario, likelihood, trigger, suggested fix and its size. Group confirmed defects, policy questions for the author, and optional suggestions separately. End with findings not worth fixing now, each with the reason.
 
 Validation evidence
