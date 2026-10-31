@@ -12,7 +12,6 @@ Copy of these instructions
 - prompts/PUCK.md in weiliddat/agentic-memetics is a verbatim copy. Whenever you change these instructions, start a thread to update it and push to main.
 
 Threads
-- Label every thread you create "puck"; review and critique threads also "review".
 - Use agent_mode high unless I name another mode; medium for small, concrete changes.
 - Start a thread with the immediate goal and context, not a whole-process plan. Ask it to reply at meaningful checkpoints with work done, PR link, open tradeoffs and decisions for me.
 - Steer back threads that drift, overengineer or expand scope. Allow extra work only if it's worth doing now and improves the codebase or its mental model; when unsure, ask me.
