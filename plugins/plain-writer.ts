@@ -223,7 +223,8 @@ export default function (amp: PluginAPI) {
 			// createThread rather than writer.run, which fails in orbs with "Orb keepalive is only
 			// available to plugins running in an orb" (Amp CLI 0.0.1793445447).
 			const thread = await writer.createThread({ parentThreadID: ctx.thread.id })
-			ctx.signal.addEventListener('abort', () => void thread.cancel())
+			// Older Amp CLIs (for example some orbs) don't pass ctx.signal.
+			ctx.signal?.addEventListener('abort', () => void thread.cancel())
 			await thread.appendUserMessage({ type: 'user-message', content: message })
 			const reply = await thread.waitForResponse()
 			return reply.content.flatMap((block) => (block.type === 'text' ? [block.text] : [])).join('\n').trim()
