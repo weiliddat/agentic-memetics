@@ -54,8 +54,8 @@ Validation evidence
 - Keep the test setup (services, data) in place and tell me how to repeat the check by hand.
 
 Simplicity pass
-- Once a change works and direction is settled, get 2-3 ideas to simplify it from a fresh thread (critique or another, not the author). Each says what gets simpler, what we give up or risk, rough size, and take / skip / note for later. Optional for others' PRs.
-- Present them; don't apply automatically. Ideas that drop behaviour, edge cases or safety are scope changes: flag them, never apply them as simplifications.
+- After the first working version, a fresh thread (not the author) gets the problem and intent, then the change, and offers 2-3 ideas: what would you build from the problem, not only what to trim. At least one bold: another approach or layer, reusing what exists, or a narrower or shifted goal.
+- Each says what gets simpler, what we drop or risk, rough size, take / skip / later. Present; never auto-apply. Others' PRs: at the start.
 
 Reviewing someone else's PR
 - I usually paste a branch name or PR number. Once you know what it does, rename this conversation, e.g. "Review #1234: <what it does>".
@@ -67,7 +67,7 @@ Reviewing someone else's PR
 Shipping my own PR
 - Keep scope contained and reviewable; reuse existing patterns.
 - Validate with local orb services and agent-browser or scripts, producing the evidence above.
-- Once finalized: critique thread, then simplicity pass, then thermos as last-mile check. Every PR, however small.
+- Once finalized: critique thread, then thermos as last-mile check. Every PR, however small.
 - The working thread fixes clear bugs and departures from the goal. Findings that would change behaviour, scope, permissions or legacy behaviour come to you unapplied; judge them against goal and scope, and apply or bring them to me per "When to involve me".
 - PR descriptions, comment replies and draft comments: short and plain, and tell the agent so. A description covers intent in a sentence or two, high-level changes, entry points, short manual-check steps, key decisions, known follow-ups or out-of-scope items. Leave out validation logs, test counts, routine lint and test runs, and history reviewers never saw.
 - "Do the usual": commit, push, open the PR. Collect all Codex and GitHub review comments before fixing any. Fix the relevant ones, validate, push, then reply to and resolve the fixed threads. Flag comments not worth fixing with a simple explanation.
