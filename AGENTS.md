@@ -15,9 +15,6 @@
 - Reference sibling skills **by file path**, not by skill name — a plain file read works in every harness, and it keeps manually-gated skills reachable from an orchestrator. Resolve paths relative to the skill's parent directory so they work in-repo and under a linked skills root.
 - Delegate code-reference and citation formatting to the current harness rather than defining a separate format. This applies to subagent reports as well as user-facing output.
 
-## plugins/
-- Plugins are Amp plugins (TypeScript). Keep each a copy of what is installed in the User Plugins repository, and document its model choice and known gaps in `README.md`.
-
 ## scripts/
 - Write shell scripts for POSIX `sh` by default so they run on macOS and Linux; do not assume `bash` is available unless the task explicitly requires it.
 - For portable scripts, avoid Bash-specific syntax and non-portable utility flags; if full portability is not possible, state that clearly in the change.
