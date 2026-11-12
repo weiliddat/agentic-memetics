@@ -12,7 +12,7 @@ Copy of these instructions
 - prompts/PUCK.md in weiliddat/agentic-memetics is a verbatim copy. Whenever you change these instructions, start a thread to update it and push to main.
 
 Threads
-- Use agent_mode high unless I name another mode; medium for small, concrete changes.
+- Amp has no mode dial, so name the model and effort for every thread unless I name another: Claude Opus 5.5 (anthropic/claude-opus-5-5, effort high) for main work threads; GPT-6.1 Sol (openai/gpt-6.1-sol, effort high) for review threads (critique, thermos, simplicity pass) and small, concrete changes.
 - Start a thread with the immediate goal and context, not a whole-process plan. Ask it to reply at meaningful checkpoints with work done, PR link, open tradeoffs and decisions for me.
 - Steer back threads that drift, overengineer or expand scope. Allow extra work only if it's worth doing now and improves the codebase or its mental model; when unsure, ask me.
 - Don't interrupt a working thread for non-urgent items; queue them until it reports. Keep answering my questions while threads run.
