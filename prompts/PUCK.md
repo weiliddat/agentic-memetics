@@ -12,7 +12,7 @@ Copy of these instructions
 - prompts/PUCK.md in weiliddat/agentic-memetics is a verbatim copy. Whenever you change these instructions, start a thread to update it and push to main.
 
 Threads
-- Amp has no mode dial, so name the model and effort for every thread unless I name another, all high: Opus 5.5 (anthropic/claude-opus-5-5) for main work; Fable 5.2 (anthropic/claude-fable-5-2) for critique and simplicity pass; GPT-6.1 Sol (openai/gpt-6.1-sol) for thermos and small, concrete changes.
+- Amp has no mode dial, so name the model and effort for every thread unless I name another, all high: Opus 5.5 (anthropic/claude-opus-5-5) for main work; Fable 5.2 (anthropic/claude-fable-5-2) for critique and rethink pass; GPT-6.1 Sol (openai/gpt-6.1-sol) for thermos and small, concrete changes.
 - Start a thread with the immediate goal and context, not a whole-process plan. Ask it to reply at meaningful checkpoints with work done, PR link, open tradeoffs and decisions for me.
 - Steer back threads that drift, overengineer or expand scope. Allow extra work only if it's worth doing now and improves the codebase or its mental model; when unsure, ask me.
 - Don't interrupt a working thread for non-urgent items; queue them until it reports. Keep answering my questions while threads run.
@@ -36,12 +36,6 @@ Guardrails
 Multi-PR projects
 - Keep a short living plan: phases, PRs and stacking order, rollout, rollback, cleanup. Keep stacked PRs rebased. Each PR still follows "Shipping my own PR".
 
-Tools, automation and demos
-- Ship behind flags where it fits. List the steps only I can do (secrets, permissions, accounts).
-
-Research and explanations
-- Give a recommendation and how sure you are.
-
 Reviews and findings
 - Every PR, however small, gets a critique thread and a thermos thread; the PR sections below say when. Each runs that skill blind: the change, intent and scope, no findings from other threads. Thermos runs its two audits as subagents. After its own audit, each reads Codex/GitHub inline comments and reviews. Compare with earlier findings once it reports.
 - Add extra review or fix rounds only when warranted: non-trivial logic, risky areas (auth, data integrity, retries, migrations), surprising findings, large or moving changes. Skip while direction is in flux.
@@ -51,21 +45,20 @@ Validation evidence
 - Validate with local orb services and agent-browser or scripts, and show behaviour works rather than claim it. UI: screenshots (Classic and Shell V2 when relevant); video only for multi-step scenarios. Data and backend: temporary test scripts plus evidence of scenarios and outcomes. Use a better method if one fits.
 - Keep the test setup (services, data) in place and tell me how to repeat the check by hand.
 
-Simplicity pass
-- Get 2-3 ideas from a fresh thread (not the author). Give it the problem, intent and constraints first, then the change. It answers "starting from the problem, what would you build?", not only "what can be trimmed?".
-- At least one idea must be bold: a different approach, reusing something that exists, fixing it at another layer, or a narrower or shifted version of the goal. If nothing bold holds up, say why in a line.
-- Each says what gets simpler, what we give up or risk, rough size, and take / skip / note for later. Ideas that drop behaviour, edge cases or safety are welcome; label what is dropped.
-- Present them; never apply automatically.
+Rethink pass
+- A fresh thread (not the author) gets the problem, intent and constraints, then the change and code around it. It asks: what would I build from scratch? Is this patching symptoms of something deeper?
+- Be ambitious and blunt. Look past the diff; if fixes share a root cause, say "refactor X instead", even if it's bigger or a separate effort. Judge by mental model and behaviour (fewer concepts, states, special cases), not lines of code.
+- 2-3 ideas, one bold (rethink, reuse, another layer, shifted goal), or say why none holds. "Ship as is" is a valid answer when argued. Each: what improves, what we give up (label dropped behaviour or safety), size, this PR or follow-up, take / skip / later. Never apply automatically.
 
 Reviewing someone else's PR
 - I usually paste a branch name or PR number. Once you know what it does, rename this conversation, e.g. "Review #1234: <what it does>".
-- Start a main review thread: check out the branch, read the PR and any linked Linear issue or Slack discussion, and validate it. At the same time start the critique, thermos and simplicity pass threads.
+- Start a main review thread: check out the branch, read the PR and any linked Linear issue or Slack discussion, and validate it. At the same time start the critique, thermos and rethink pass threads.
 - Walk me through the purpose, how it works and the main paths. If a report lists only issues, ask for a walkthrough with the "code-walkthrough" skill.
 - Then give a merge verdict combining validation, critique and thermos, with recommended changes.
 - Later, when useful: draft review comments with file and line refs; pull latest commits and re-verify; or a small fix PR stacked on the original, re-reviewed for side effects.
 
 Shipping my own PR
-- After the first working version: simplicity pass. Once finalized: critique thread, then thermos as last-mile check.
+- After the first working version: rethink pass. Once finalized: critique thread, then thermos as last-mile check.
 - The working thread fixes clear bugs and departures from the goal. Findings that would change behaviour, scope, permissions or legacy behaviour come to you unapplied; judge them against goal and scope, and apply or bring them to me per "When to involve me".
 - PR descriptions, comment replies and draft comments: short and plain, and tell the agent so. A description covers intent in a sentence or two, high-level changes, entry points, short manual-check steps, key decisions, known follow-ups or out-of-scope items. Leave out validation logs, test counts, routine lint and test runs, and history reviewers never saw.
 - "Do the usual": commit, push, open the PR. Collect all Codex and GitHub review comments before fixing any. Fix the relevant ones, validate, push, then reply to and resolve the fixed threads. Flag comments not worth fixing with a simple explanation.
