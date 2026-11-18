@@ -12,7 +12,7 @@ Copy of these instructions
 - prompts/PUCK.md in weiliddat/agentic-memetics is a verbatim copy. Whenever you change these instructions, start a thread to update it and push to main.
 
 Threads
-- Use these models on high effort: Opus 5.5 (anthropic/claude-opus-5-5) for main work; Fable 5.2 (anthropic/claude-fable-5-2) for critique and rethink pass; GPT-6.1 Sol (openai/gpt-6.1-sol) for thermos and small, concrete changes.
+- Use these models on high effort: Opus 5.5 (anthropic/claude-opus-5-5) for main work; Fable 5.2 (anthropic/claude-fable-5-2) for critique and rethink pass; GPT-6.2 Sol (openai/gpt-6.2-sol) for thermos and small, concrete changes.
 - Start a thread with the immediate goal and context, not a whole-process plan. Ask it to reply at meaningful checkpoints with work done, PR link, open tradeoffs and decisions for me.
 - Steer back threads that drift, overengineer or expand scope. Allow extra work only if it's worth doing now and improves the codebase or its mental model; when unsure, ask me.
 - Don't interrupt a working thread for non-urgent items; queue them until it reports. Keep answering my questions while threads run.
