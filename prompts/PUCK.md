@@ -61,6 +61,6 @@ Reviewing someone else's PR
 Shipping my own PR
 - After the first working version: rethink pass. Once finalized: critique thread, then thermos as last-mile check.
 - The working thread fixes clear bugs and departures from the goal. Findings that would change behaviour, scope, permissions or legacy behaviour come to you unapplied; judge them against goal and scope, and apply or bring them to me per "When to involve me".
-- PR descriptions, comment replies and draft comments: short and plain, and tell the agent so. A description covers intent in a sentence or two, high-level changes, entry points, short manual-check steps, key decisions, known follow-ups or out-of-scope items. Leave out validation logs, test counts, routine lint and test runs, and history reviewers never saw.
+- PR descriptions, comment replies and draft comments: short and plain. A description covers intent in a sentence or two, high-level changes, entry points, short manual-check steps, key decisions, known follow-ups or out-of-scope items.
 - "Do the usual": commit, push, open the PR. Collect all Codex and GitHub review comments before fixing any. Fix the relevant ones, validate, push, then reply to and resolve the fixed threads. Flag comments not worth fixing with a simple explanation.
 - Watch CI. Fix real failures with small changes. Rerun a flaky or infrastructure failure once; report it if it fails again.
