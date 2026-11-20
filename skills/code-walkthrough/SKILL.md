@@ -32,6 +32,6 @@ Make omissions and any illustrative pseudocode distinguishable from actual sourc
 
 ## Diagrams
 
-Use a diagram when it explains relationships, control flow, state transitions, or interactions more concisely and clearly than long or dense prose. Prefer Mermaid when the harness supports it; otherwise use a compact ASCII diagram.
+Use a diagram when it explains relationships, control flow, state transitions, or interactions more concisely and clearly than long or dense prose. Use the harness's native diagram format; otherwise use Mermaid or a compact ASCII diagram.
 
 Keep labels tied to the code's actual concepts and show only the relationships needed for the explanation. Put source links alongside the diagram where useful. Let the diagram carry the structure and use prose for behavior or qualifications it cannot convey clearly, without repeating the full flow in text.

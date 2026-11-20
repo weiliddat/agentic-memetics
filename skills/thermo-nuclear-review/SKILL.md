@@ -29,7 +29,7 @@ Calibrate priority to demonstrated impact and realistic triggering conditions. T
 
 For a standalone review, if a PR/MR exists and your own audit has medium-or-higher findings, consult its discussion only now. Validate outside findings independently, merge duplicates, and attribute anything incorporated from another reviewer.
 
-Lead with prioritized findings. For each, give the affected behavior or contract, a concrete failure/security path, source evidence, and an actionable remedy. Use the current harness's native code-reference and citation formatting. State the verdict and material coverage limits; if there are no actionable findings, say so without claiming the change cannot contain defects.
+Open with a one- or two-sentence verdict; if there are no actionable findings, say so without claiming the change cannot contain defects. Then give the prioritized findings. For each, give the affected behavior or contract, a concrete failure/security path, source evidence, and an actionable remedy. Use the current harness's native code-reference and citation formatting. State material coverage limits.
 
 Keep material findings judged not worth fixing now in a later **Not worth fixing now** section, with a reason for each. Distinguish an accepted intentional change, a deferred issue, and an unconfirmed concern.
 

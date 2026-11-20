@@ -22,7 +22,7 @@ After both audits finish, if a PR/MR exists and either audit has medium-or-highe
 
 Merge true duplicates, preserving their evidence and attribution; keep distinct failure modes or remedies separate even when they share a location. Agreement can strengthen an evidence-backed conclusion but is not a vote for higher severity. Prioritize by demonstrated impact, urgency, and the value and cost of the remedy. Preserve material disagreements and uncertainty.
 
-Lead with prioritized actionable findings, each with source evidence, consequences, and a concrete remedy. Follow with a concise unified verdict and material coverage limits. Use the current harness's native code-reference and citation formatting; do not restate the individual reports wholesale.
+Open with a one- or two-sentence unified verdict, then prioritized actionable findings, each with source evidence, consequences, and a concrete remedy, then material coverage limits. Write the combined report anew for the reader; do not carry over reviewers' shorthand or labels. Use the current harness's native code-reference and citation formatting; do not restate the individual reports wholesale.
 
 End with **Not worth fixing now**: list every reviewer finding not retained as actionable or merged into another finding, with its source and the specific reason it was rejected, deferred, or judged outweighed by cost. Include incorporated discussion findings handled the same way. Distinguish invalid findings, intentional tradeoffs, low-value improvements, and unresolved evidence. Say **None** if this section is empty. Nothing may disappear merely because it does not fit the summary.
 

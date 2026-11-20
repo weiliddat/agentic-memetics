@@ -27,7 +27,7 @@ For each meaningful change, ask what a reader must now understand, what became m
 
 ## Report and approval bar
 
-Prioritize findings in this order:
+Open with a one- or two-sentence verdict, then give findings in this priority order:
 
 1. Structural code-quality regressions.
 2. Missed opportunities for dramatic simplification.
@@ -41,6 +41,6 @@ Be direct and demanding, not rude. Prefer high-conviction structural findings to
 
 Correct behavior alone is not enough for a favorable verdict. Treat clear structural regressions, visibly simpler models left unused, unjustified file growth, tangled special cases, unnecessary indirection, canonical-capability duplication, and misplaced ownership as presumptive reasons to revise unless a concrete justification outweighs them. Distinguish those from optional improvements; do not inflate severity merely because a refactor is possible.
 
-State the verdict and material coverage limits. Keep material findings judged not worth fixing now in a later **Not worth fixing now** section, with a reason for each. Attribute outside findings consulted after your own audit, validating them rather than inheriting their conclusions.
+State material coverage limits. Keep material findings judged not worth fixing now in a later **Not worth fixing now** section, with a reason for each. Attribute outside findings consulted after your own audit, validating them rather than inheriting their conclusions.
 
 Review only; do not implement fixes, post external comments, approve, or ship changes unless separately asked.
