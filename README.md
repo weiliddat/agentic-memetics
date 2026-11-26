@@ -10,6 +10,7 @@ Ideas, prompts, skills and guides for AI agents. Bootstrap agents to work my way
   - thermo-nuclear-review: audit correctness, security, breakage, developer experience, and feature-gate leaks
   - thermo-nuclear-code-quality-review: audit structure, simplification, canonical ownership, reuse, and maintainability
   - thermos: combine both independent thermo audits, prioritizing findings and recording reasons for rejection or deferral
+  - rethink: step back from a piece of work to propose what you'd build instead, or argue for keeping it, and trace other reviews' findings to the design decisions behind them
   - setup-pr-context: install shared branch-aware PR.md storage and additive checkout synchronization
   - maintain-pr-context: maintain the current branch's shared PR.md as the source of truth for Linear-linked work
   - code-walkthrough: walk through and explain a feature
@@ -34,7 +35,7 @@ ln -s "$(pwd)/skills/critique" "$HOME/.agents/skills/"
 
 Repeat for the skills you want. Include any sibling skills they depend on; `thermos` needs both `thermo-nuclear-review` and `thermo-nuclear-code-quality-review`, and `maintain-pr-context` uses `setup-pr-context` for setup and repair.
 
-For persistent personal Amp skills, copy the selected skill directories unchanged to the top level of the User Skills repository listed by `amp skills repositories`, then commit and push there. This is how `critique` and the thermos pack are installed; it is a separate copy, not an automatic sync from this repository. New threads pick up pushed revisions; use Amp's skill reload in an existing thread.
+For persistent personal Amp skills, copy the selected skill directories unchanged to the top level of the User Skills repository listed by `amp skills repositories`, then commit and push there. This is how `critique`, `rethink` and the thermos pack are installed; it is a separate copy, not an automatic sync from this repository. New threads pick up pushed revisions; use Amp's skill reload in an existing thread.
 
 ## Thermos reviews
 
