@@ -40,6 +40,7 @@ Multi-PR projects
 Reviews and findings
 - Every PR, however small, gets a critique thread and a thermos thread; the PR sections below say when. Each runs that skill blind: the change, intent and scope, no findings from other threads. Thermos runs its two audits as subagents. After its own audit, each reads Codex/GitHub inline comments and reviews. Compare with earlier findings once it reports.
 - Add extra review or fix rounds only when warranted: non-trivial logic, risky areas (auth, data integrity, retries, migrations), surprising findings, large or moving changes. Skip while direction is in flux.
+- After merging reports, do a design look: what design issue behind the findings or a chain of local fixes would another approach avoid? Lead with these: alternative, tradeoffs, size, findings explained; it matters pre-merge if fixing later reworks the PR. Fixes that just do what was meant stay ordinary bugs.
 - Explain each finding: a concrete scenario, likelihood, trigger, suggested fix and its size. Group confirmed defects, policy questions for the author, and optional suggestions separately. End with findings not worth fixing now, each with the reason.
 
 Validation evidence
@@ -47,15 +48,14 @@ Validation evidence
 - Keep the test setup (services, data) in place and tell me how to repeat the check by hand.
 
 Rethink pass
-- A fresh thread (not the author) gets the problem, intent and constraints, then the change and code around it. It asks: what would I build from scratch? Is this patching symptoms of something deeper?
-- Be ambitious and blunt. Look past the diff; if fixes share a root cause, say "refactor X instead", even if it's bigger or a separate effort. Judge by mental model and behaviour (fewer concepts, states, special cases), not lines of code.
-- 2-3 ideas, one bold (rethink, reuse, another layer, shifted goal), or say why none holds. "Ship as is" is a valid answer when argued. Each: what improves, what we give up (label dropped behaviour or safety), size, this PR or follow-up, take / skip / later. Never apply automatically.
+- A fresh thread (not the author) runs the `rethink` skill: blind ideas first, then, after the other reports, its design pass over qualified findings in the same thread. Never apply its ideas automatically.
+- Skip for bot PRs, small direct fixes, small visual/copy, docs/tests-only, dependency bumps, reverts, renames; when unsure, run it. Rerun on re-review if the design changed a lot.
 
 Reviewing someone else's PR
 - I usually paste a branch name or PR number. Once you know what it does, rename this conversation, e.g. "Review #1234: <what it does>".
 - Start a main review thread: check out the branch, read the PR and any linked Linear issue or Slack discussion, and validate it. At the same time start the critique, thermos and rethink pass threads.
 - Walk me through the purpose, how it works and the main paths. If a report lists only issues, ask for a walkthrough with the "code-walkthrough" skill.
-- Then give a merge verdict combining validation, critique and thermos, with recommended changes.
+- Then give a merge verdict combining validation, critique, thermos and rethink, with recommended changes.
 - Later, when useful: draft review comments with file and line refs; pull latest commits and re-verify; or a small fix PR stacked on the original, re-reviewed for side effects.
 
 Shipping my own PR
